@@ -13,7 +13,7 @@ var $arr_ektp = array(0=>"Belum ada E-KTP","Ada E-KTP");
 
 var $kelengkapan = array(
 					 "0" => "Berkas Lengkap ",
-					 "1" => "Berkas TIdak Lengkap ");
+					 "1" => "Berkas Tidak Lengkap ");
 
 function arr_lengkap(){
 	$kelengkapan = $this->kelengkapan;
