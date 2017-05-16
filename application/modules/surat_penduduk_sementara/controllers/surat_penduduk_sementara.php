@@ -97,6 +97,8 @@ class surat_penduduk_sementara extends op_controller {
            $responce->rows[$i]['ttd_nama']          = $result[$i]['ttd_nama'] ; 
             $responce->rows[$i]['ttd_jabatan']          = $result[$i]['ttd_jabatan'] ; 
             $responce->rows[$i]['ttd']          = $result[$i]['ttd'] ; 
+            $responce->rows[$i]['lengkap']          = $result[$i]['lengkap'] ; 
+
             
             $responce->rows[$i]['nip']          = $result[$i]['nip'] ; 
             $responce->rows[$i]['penandatangan_nama']          = $result[$i]['ttd_nama'] ; 
