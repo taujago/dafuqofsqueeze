@@ -96,6 +96,7 @@ class surat_mendirikan_bangunan extends op_controller {
 			$responce->rows[$i]['ex_tgl_lahir']           = flipdate($result[$i]['ex_tgl_lahir']) ;
 			$responce->rows[$i]['ex_pekerjaan']           = $result[$i]['ex_pekerjaan'] ;
 			$responce->rows[$i]['ex_alamat']           = $result[$i]['ex_alamat'] ;
+            $responce->rows[$i]['lengkap']           = $result[$i]['lengkap'] ;
 			
             $responce->rows[$i]['alamat_bangunan']	= $result[$i]['alamat_bangunan'] ;
 			$responce->rows[$i]['rt_bangunan']	= $result[$i]['rt_bangunan'] ;
