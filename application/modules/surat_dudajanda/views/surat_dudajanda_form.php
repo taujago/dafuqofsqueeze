@@ -33,6 +33,9 @@
 		 </table>
 			 
 			</fieldset>
+			 <?php
+					$this->load->view("berkas");
+				?>
 		  
 			<fieldset> <legend><strong>Pejabat </strong></legend>
 				<table width="661">

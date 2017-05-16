@@ -97,6 +97,7 @@ class surat_dudajanda extends op_controller {
             $responce->rows[$i]['status_kawin']          = $arr_status_kawin[strtolower($result[$i]['status_kawin'])] ; 
            
              $responce->rows[$i]['ttd']          = $result[$i]['ttd'] ; 
+              $responce->rows[$i]['lengkap']          = $result[$i]['lengkap'] ; 
             $responce->rows[$i]['ttd_nama']          = $result[$i]['ttd_nama'] ; 
             $responce->rows[$i]['ttd_jabatan']          = $result[$i]['ttd_jabatan'] ; 
             $responce->rows[$i]['ttd']          = $result[$i]['ttd'] ; 
