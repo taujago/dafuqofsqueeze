@@ -95,6 +95,7 @@ class surat_cerai extends op_controller {
             $responce->rows[$i]['perempuan_umur']         = $result[$i]['perempuan_umur'];
             $responce->rows[$i]['perempuan_alamat']         = $result[$i]['perempuan_alamat'];
             $responce->rows[$i]['laki_alamat']         = $result[$i]['laki_alamat'];
+            $responce->rows[$i]['lengkap']         = $result[$i]['lengkap'];
                         
             $responce->rows[$i]['ttd']          = $result[$i]['ttd'] ; 
             $responce->rows[$i]['ttd_nama']          = $result[$i]['ttd_nama'] ; 
