@@ -29,6 +29,9 @@ function index()
 
    	$data['arr_jk']  = $this->cm->arr_jk;
    	$data['arr_kaya_miskin']  = $this->cm->arr_kaya_miskin;
+
+   	$arr['ektp'] = $this->cm->arr_ektp;
+
    	//$data['arr_golongan_darah']  = $this->cm->arr_golongan_darah;
    	$data['arr_warga_negara']  = $this->cm->arr_warga_negara;
    	$data['arr_agama']  = $this->cm->arr_agama();

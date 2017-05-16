@@ -9,6 +9,8 @@ var $arr_jk = array("L"=>"Laki-Laki","P" =>"Perempuan");
 
 var $arr_kaya_miskin = array("1" =>"Bukan Penduduk Miskin","2" =>"Penduduk Miskin");
 
+var $arr_ektp = array(0=>"Belum ada E-KTP","Ada E-KTP");
+
 var $kelengkapan = array(
 					 "0" => "Berkas Lengkap ",
 					 "1" => "Berkas TIdak Lengkap ");
