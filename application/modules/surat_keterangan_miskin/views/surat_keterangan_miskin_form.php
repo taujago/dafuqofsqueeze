@@ -29,10 +29,9 @@
 			</table>
 			 
 			</fieldset>
-			
-          <!--   <fieldset> <legend> <b>Peruntukan Surat </b></legend>
-            <textarea class="ckeditor" cols="80" id="ket_surat" name="ket_surat" rows="10"></textarea>
-            </fieldset> -->
+			 <?php
+					$this->load->view("berkas");
+				?>
 		  
 			<fieldset> <legend><strong>Pejabat </strong></legend>
 				<table width="661">

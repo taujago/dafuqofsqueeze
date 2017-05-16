@@ -95,6 +95,7 @@ class surat_keterangan_miskin extends op_controller {
             $responce->rows[$i]['pekerjaan']                 = $result[$i]['pekerjaan'];  
             $responce->rows[$i]['nama_ayah']                 = $result[$i]['nama_ayah']; 
             $responce->rows[$i]['alamat']               = $result[$i]['alamat'];     
+             $responce->rows[$i]['lengkap']               = $result[$i]['lengkap'];     
             $responce->rows[$i]['kehilangan']            = $result[$i]['kehilangan'] ;
             $responce->rows[$i]['ket_surat']            = $result[$i]['ket_surat'] ;
             $responce->rows[$i]['ttd']                  = $result[$i]['ttd'] ; 
