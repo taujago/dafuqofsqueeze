@@ -257,7 +257,10 @@
 			 		<td><a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" onclick="tambahpengikut()">Tambahkan</a></td>
 			 	</tr>
 				</table>
-			</fieldset>	
+			</fieldset>
+			<?php
+					$this->load->view("berkas");
+				?>	
 					<fieldset  style="width:507px; float:left" > <legend><strong>Pejabat </strong></legend>
 				<table>
 				 <tr><td width="200px">Penanda tangan surat </td>

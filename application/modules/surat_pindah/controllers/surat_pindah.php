@@ -111,6 +111,8 @@ class surat_pindah extends op_controller {
             $responce->rows[$i]['kode_pos_pindah']          = $result[$i]['kode_pos_pindah'] ; 
             $responce->rows[$i]['telepon_pindah']          = $result[$i]['telepon_pindah'] ; 
             $responce->rows[$i]['petugas']          = $result[$i]['petugas'] ; 
+             $responce->rows[$i]['lengkap']          = $result[$i]['lengkap'] ; 
+
 
             $responce->rows[$i]['kode_negara']          = $result[$i]['kode_negara'] ; 
             $responce->rows[$i]['alamat_negara']          = $result[$i]['alamat_negara'] ; 
