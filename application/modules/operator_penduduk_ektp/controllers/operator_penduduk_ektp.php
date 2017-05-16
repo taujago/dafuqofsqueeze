@@ -139,7 +139,7 @@ function get_data(){
 			$responce->rows[$i]['kecamatan']	 = $result[$i]['kecamatan'] ; 
 			$responce->rows[$i]['id_pendidikan'] = $result[$i]['id_pendidikan'] ;  
 			$responce->rows[$i]['baca_tulis']	 = $result[$i]['baca_tulis'] ;  
-			$responce->rows[$i]['ektp']	 		= ($result[$i]['ektp'] == "0" )?"<span >ADA</span>":"<span style='color:red;'>TIDAK ADA</span>"; 
+			$responce->rows[$i]['ektp']	 		= ($result[$i]['ektp'] == "1" )?"<span >ADA</span>":"<span style='color:red;'>TIDAK ADA</span>"; 
 			
 			  
  		
@@ -180,17 +180,7 @@ function get_data(){
 
 
 
-			 $responce->rows[$i]['foto']			= (!empty($result[$i]['foto']))?
-			'<img width="50px" height="50px" src="'.base_url().'foto/' .$result[$i]['foto'].'" />':
-			'<img width="50px" height="50px" src="'.base_url().'foto/no_photo.jpg" />';
-			
-	/*$responce->rows[$i]['no_paspor']		= $result[$i]['no_paspor'] ; 
-			$responce->rows[$i]['tgl_paspor_akhir']	= $result[$i]['tgl_paspor_akhir'] ; 
-			$responce->rows[$i]['no_akta_lahir']	= $result[$i]['no_akta_lahir'] ; 
-			$responce->rows[$i]['no_akta_nikah']	= $result[$i]['no_akta_nikah'] ; 
-			$responce->rows[$i]['tgl_akta_nikah']	= $result[$i]['tgl_akta_nikah'] ; 
-			$responce->rows[$i]['no_akta_cerai']	= $result[$i]['no_akta_cerai'] ; 
-			$responce->rows[$i]['tgl_akta_cerai']	= $result[$i]['tgl_akta_cerai'] ; */
+			 
 
 			 
 
@@ -199,7 +189,7 @@ function get_data(){
         echo json_encode($responce); 
     }
   
-function hapus() {
+function ada() {
 		$ids = $_POST['ids'];
 		$arr_id = explode(",",$ids);
 		$a=array(); $b=array();
@@ -207,7 +197,7 @@ function hapus() {
 			//$this->core_model->delete_table_data('kk',array("no_kk"=>$id)); 
 			$this->db->where('id_penduduk',$id);
 			// $res = $this->db->delete("penduduk");
-			$res = $this->db->query("UPDATE penduduk SET kaya_miskin='2' WHERE id_penduduk='$id' ");
+			$res = $this->db->query("UPDATE penduduk SET ektp='1' WHERE id_penduduk='$id' ");
 			if($res) $a[]=$id;
 			else $b[]=$id;
 			//echo $this->db->last_query()."<br />";
@@ -217,7 +207,7 @@ function hapus() {
 
 		echo json_encode(array("success"=>true,"pesan"=>$pesan));
 	}    
-function kaya() {
+function tidakada() {
 		$ids = $_POST['ids'];
 		$arr_id = explode(",",$ids);
 		$a=array(); $b=array();
@@ -225,7 +215,7 @@ function kaya() {
 			//$this->core_model->delete_table_data('kk',array("no_kk"=>$id)); 
 			$this->db->where('id_penduduk',$id);
 			// $res = $this->db->delete("penduduk");
-			$res = $this->db->query("UPDATE penduduk SET kaya_miskin='1' WHERE id_penduduk='$id' ");
+			$res = $this->db->query("UPDATE penduduk SET ektp='0' WHERE id_penduduk='$id' ");
 			if($res) $a[]=$id;
 			else $b[]=$id;
 			//echo $this->db->last_query()."<br />";
@@ -241,30 +231,70 @@ function kaya() {
  
  
 
- function cetak($id_penduduk) {
+ // function cetak($id_penduduk) {
 
- 	$this->db->select('*')->from('v_penduduk p')
- 	->join('kk_anggota kk','p.id_penduduk=kk.id_penduduk','left')
- 	->where("p.id_penduduk",$id_penduduk)
- 	->where("p.id_desa",$this->session->userdata("operator_id_desa"));
+ // 	$this->db->select('*')->from('v_penduduk p')
+ // 	->join('kk_anggota kk','p.id_penduduk=kk.id_penduduk','left')
+ // 	//->where("p.id_penduduk",$id_penduduk)
+ // 	->where("p.id_desa",$this->session->userdata("operator_id_desa"));
 
- 	$res = $this->db->get();
- 	$data=$res->row_array();
+ // 	$res = $this->db->get();
+ // 	$data=$res->row_array();
 	
- 	$this->cm->data_desa();
-	$temp = $this->dm->get_all_data($id_penduduk);
-	$data = array_merge($data,$temp);
+ // 	$this->cm->data_desa();
+	// $temp = $this->dm->get_all_data($id_penduduk);
+	// $data = array_merge($data,$temp);
 	
- 	$data['nama_camat'] = $this->cm->desa->nama_camat;
-	//echo $this->cm->desa->nama_camat;
-	//var_dump($data);
-	$this->load->view("biodata",$data); 	
+ // 	$data['nama_camat'] = $this->cm->desa->nama_camat;
+	// //echo $this->cm->desa->nama_camat;
+	// //var_dump($data);
+	// $this->load->view("biodata",$data); 	
+
+
+
+ // }
+
+
+
+
+ // function cetak($id_penduduk) {
+
+ // 	$this->db->select('*')->from('v_penduduk p')
+ // 	->join('kk_anggota kk','p.id_penduduk=kk.id_penduduk','left')
+ // 	//->where("p.id_penduduk",$id_penduduk)
+ // 	->where("p.id_desa",$this->session->userdata("operator_id_desa"));
+
+ // 	$res = $this->db->get();
+ // 	$data=$res->row_array();
+	
+ // 	$this->cm->data_desa();
+	// $temp = $this->dm->get_all_data($id_penduduk);
+	// $data = array_merge($data,$temp);
+	
+ // 	$data['nama_camat'] = $this->cm->desa->nama_camat;
+	// //echo $this->cm->desa->nama_camat;
+	// //var_dump($data);
+	// $this->load->view("biodata",$data); 	
+
+
+
+ // }
+
+
+ function cetak() {
+ 	 
+
+    $data['record'] = $this->dm->rec_data(0);
+    $id_desa =   $this->session->userdata("operator_id_desa");
+    $data['l'] =  $this->dm->get_stat('L'); //$this->dm->get_data(array("jk"=>"l","id_desa"=>$id_desa))->num_rows();
+    $data['p'] =  $this->dm->get_stat('P'); //$this->dm->get_data(array("jk"=>"p","id_desa"=>$id_desa))->num_rows();
+    
+
+	$this->load->view("operator_penduduk_ektp_cetak",$data); 	
 
 
 
  }
-
-
 
  function pdf($id_penduduk) {
 

@@ -2,14 +2,14 @@
 function cetak_kaya_miskin() {
 	 
 	
-		window.open('<?php echo site_url("statistik_penduduk_kaya_miskin/cetak/") ?>/');
+		window.open('<?php echo site_url("operator_penduduk_ektp/cetak/") ?>/');
 	
 	 
 }
 function excel_kaya_miskin() {
 	 
 	
-		window.open('<?php echo site_url("statistik_penduduk_kaya_miskin/excel/") ?>/');
+		window.open('<?php echo site_url("operator_penduduk_ektp/excel/") ?>/');
 	
 	 
 }
@@ -240,7 +240,7 @@ function edit() {
 }
 
 
-function hapus() {
+function ada() {
 			var row = $('#tt').datagrid('getSelections');
  			var arr = new Array();
 			for(var i=0; i < row.length; i++) {
@@ -250,9 +250,9 @@ function hapus() {
 			ids = arr.join();
 			console.log(ids);
   			if (row){
-				$.messager.confirm('Konfirmasi','Anda yakin akan menetapkan penduduk miskin ? ',function(r){
+				$.messager.confirm('Konfirmasi','Menset penduduk memiliki EKTP. anda yakin  ? ',function(r){
 					if (r){
-						$.post('<?php echo site_url("$controller/hapus") ?>',{ids:ids},function(result){
+						$.post('<?php echo site_url("$controller/ada") ?>',{ids:ids},function(result){
 							
 							//return false;
 							if (result.success == true){
@@ -270,7 +270,7 @@ function hapus() {
 			}
 }
 
-function kaya() {
+function tidakada() {
 			var row = $('#tt').datagrid('getSelections');
  			var arr = new Array();
 			for(var i=0; i < row.length; i++) {
@@ -280,9 +280,9 @@ function kaya() {
 			ids = arr.join();
 			console.log(ids);
   			if (row){
-				$.messager.confirm('Konfirmasi','Anda yakin akan menetapkan bukan penduduk miskin ? ',function(r){
+				$.messager.confirm('Konfirmasi','Menset penduduk tidak memiliki EKTP. anda yakin  ? ',function(r){
 					if (r){
-						$.post('<?php echo site_url("$controller/kaya") ?>',{ids:ids},function(result){
+						$.post('<?php echo site_url("$controller/tidakada") ?>',{ids:ids},function(result){
 							
 							//return false;
 							if (result.success == true){

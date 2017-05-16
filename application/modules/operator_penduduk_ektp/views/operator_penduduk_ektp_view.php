@@ -6,7 +6,6 @@
 			<tr>
 				<th field="ck" checkbox="true"></th>
 				
-				<th field="foto" width="80" sortable="true"><strong>Foto</strong></th>
 				<th field="no_kk" width="140" sortable="true"><strong>No. KK</strong></th>
 				<th field="nik" width="150" sortable="true"><strong>NIK</strong></th>
 				<th field="nama" width="200" sortable="true"><strong>Nama</strong></th>
@@ -45,9 +44,9 @@
 	<!-- 	<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="baru()" >Tambah Baru</a>
 		<a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="edit()">Edit</a>
 		<a href="#" class="easyui-linkbutton" iconCls="icon-detail" plain="true" onclick="detail()">Detail</a> -->
-		<a href="#" class="easyui-linkbutton" iconCls="icon-ok" plain="true" onclick="hapus();">Memiliki E-KTP</a>
-		<a href="#" class="easyui-linkbutton" iconCls="	icon-remove" plain="true" onclick="kaya();">Tidak Memiliki E-KTP</a>
-		<a href="statistik_penduduk_kaya_miskin" class="easyui-linkbutton" iconCls="icon-print" plain="true" >Lihat Penduduk Miskin</a>
+		<a href="#" class="easyui-linkbutton" iconCls="icon-ok" plain="true" onclick="ada();">Memiliki E-KTP</a>
+		<a href="#" class="easyui-linkbutton" iconCls="	icon-remove" plain="true" onclick="tidakada();">Tidak Memiliki E-KTP</a>
+		<a href="statistik_penduduk_kaya_miskin" class="easyui-linkbutton" iconCls="icon-viewlist" plain="true" >Lihat Penduduk Miskin</a>
 		<a href="#" class="easyui-linkbutton" iconCls="icon-print" plain="true" onclick="cetak_kaya_miskin();">Cetak</a>
 	 	 <a href="#" class="easyui-linkbutton" iconCls="icon-excel" plain="true" onclick="excel_kaya_miskin();">Export Excel</a>
 		<br />
