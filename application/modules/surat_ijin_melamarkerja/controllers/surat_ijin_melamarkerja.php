@@ -93,6 +93,7 @@ class surat_ijin_melamarkerja extends op_controller {
             $responce->rows[$i]['alamat_perusahaan']          = $result[$i]['alamat_perusahaan'] ;
             $responce->rows[$i]['melamar_sebagai']          = $result[$i]['melamar_sebagai'] ;
             $responce->rows[$i]['ayah_alamat']          = $result[$i]['ayah_alamat'] ;
+             $responce->rows[$i]['lengkap']          = $result[$i]['lengkap'] ;
             $responce->rows[$i]['ttd']          = $result[$i]['ttd'] ; 
             $responce->rows[$i]['ttd_nama']          = $result[$i]['ttd_nama'] ; 
             $responce->rows[$i]['ttd_jabatan']          = $result[$i]['ttd_jabatan'] ; 
