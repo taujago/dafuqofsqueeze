@@ -95,8 +95,9 @@ class surat_belum_bekerja extends op_controller {
             $responce->rows[$i]['nip']          = $result[$i]['nip'] ; 
             $responce->rows[$i]['penandatangan_nama']          = $result[$i]['ttd_nama'] ; 
             $responce->rows[$i]['pangkat']          = $result[$i]['pangkat'] ; 
-            $responce->rows[$i]['penandatangan_jabatan']          = $result[$i]['ttd_jabatan'] ; 
-           
+            $responce->rows[$i]['penandatangan_jabatan']          = $result[$i]['ttd_jabatan'] ;
+            $responce->rows[$i]['lengkap']          = $result[$i]['lengkap'] ; 
+
            
              
              

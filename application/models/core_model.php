@@ -9,7 +9,14 @@ var $arr_jk = array("L"=>"Laki-Laki","P" =>"Perempuan");
 
 var $arr_kaya_miskin = array("1" =>"Bukan Penduduk Miskin","2" =>"Penduduk Miskin");
 
+var $kelengkapan = array(
+					 "1" => "Berkas Lengkap ",
+					 "2" => "Berkas TIdak Lengkap ");
 
+function arr_lengkap(){
+	$kelengkapan = $this->kelengkapan;
+	return $kelengkapan;
+}
 
 
 
