@@ -103,7 +103,8 @@ class surat_keterangan_hilang_surat_tanah extends op_controller {
 			$responce->rows[$i]['ex_pekerjaan']           = $result[$i]['ex_pekerjaan'] ;
 			$responce->rows[$i]['ex_alamat']           = $result[$i]['ex_alamat'] ;
 			$responce->rows[$i]['panjang']          = $result[$i]['panjang'] ; 
-            $responce->rows[$i]['lebar']          = $result[$i]['lebar'] ; 
+            $responce->rows[$i]['lebar']          = $result[$i]['lebar'] ;
+            $responce->rows[$i]['lengkap']          = $result[$i]['lengkap'] ;  
  
 			
 			
