@@ -46,6 +46,12 @@
 			 		<td > Tgl Pulang</td> 
 			 		<td> : <input type="text" name="tgl_pulang" id="tgl_pulang" /></td></td>
 			 	</tr>
+			 	<td> Kelengkapan Berkas</td>
+			 		<td>:  <?php 
+						$lengkap = isset($lengkap)?$lengkap:"";
+						echo form_dropdown("lengkap",$this->cm->arr_lengkap(),$lengkap,'id="lengkap"') ?></td>
+					</td>
+				</tr>
 			 	 
 		 </table>
 

@@ -102,7 +102,8 @@ class surat_bepergian extends op_controller {
             $responce->rows[$i]['maksud']          = $result[$i]['maksud'] ; 
             $responce->rows[$i]['barang_bawaan']          = $result[$i]['barang_bawaan'] ; 
            
-            $responce->rows[$i]['ttd']          = $result[$i]['ttd'] ; 
+            $responce->rows[$i]['ttd']          = $result[$i]['ttd'] ;
+            $responce->rows[$i]['lengkap']          = $result[$i]['lengkap'] ; 
             $responce->rows[$i]['nip']          = $result[$i]['nip'] ; 
             $responce->rows[$i]['penandatangan_nama']          = $result[$i]['ttd_nama'] ; 
             $responce->rows[$i]['pangkat']          = $result[$i]['pangkat'] ; 
@@ -119,7 +120,8 @@ class surat_bepergian extends op_controller {
         $data = $this->input->post();
         $this->load->library('form_validation');
         $this->form_validation->set_rules('nik','NIK','required');    
-        $this->form_validation->set_rules('no_surat','Nomor surat','required');   
+        $this->form_validation->set_rules('no_surat','Nomor surat','required'); 
+        $this->form_validation->set_rules('lengkap','Kelengkapan Berkas','required');   
         $this->form_validation->set_rules('tgl_berangkat','Tanggal berangkat','required');              
         $this->form_validation->set_rules('tgl_pulang','Tanggal Pulang','required');   
         $this->form_validation->set_rules('hubungan','Kedudukan dalam keluarga','required');              
