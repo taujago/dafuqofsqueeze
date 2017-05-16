@@ -99,6 +99,7 @@ class surat_ijin_keluarnegeri extends op_controller {
              $responce->rows[$i]['ayah_nik']          = $result[$i]['ayah_nik'] ; 
             $responce->rows[$i]['ibu_nik']          = $result[$i]['ibu_nik'] ;  
             $responce->rows[$i]['tujuan']          = $result[$i]['tujuan'] ; 
+            $responce->rows[$i]['lengkap']          = $result[$i]['lengkap'] ; 
             $responce->rows[$i]['ttd']          = $result[$i]['ttd'] ; 
              $responce->rows[$i]['ttd_nama']          = $result[$i]['ttd_nama'] ; 
             $responce->rows[$i]['ttd_jabatan']          = $result[$i]['ttd_jabatan'] ; 
