@@ -46,8 +46,8 @@ class ektpmodel extends CI_Model
 	 		$this->db->where("status_kawin",$param['status_kawin']);
 	 	}
 
-	 	if($param['kaya_miskin']<>'x') {
-	 		$this->db->where("kaya_miskin",$param['kaya_miskin']);
+	 	if($param['ektp']<>'x') {
+	 		$this->db->where("ektp",$param['ektp']);
 	 	}
 
 	 	if($param['id_dusun']<>'x') {
@@ -58,13 +58,15 @@ class ektpmodel extends CI_Model
 	 		$this->db->where("status_kependudukan",$param['status_kependudukan']);
 	 	}
 
+	 	$this->db->where(" ( umur >= 17 or status_kawin <> '1' ) ",null,false);
+
 		($param['limit'] != null ? $this->db->limit($param['limit']['end'], $param['limit']['start']) : '');
 		//$this->db->limit($param['limit']['end'], $param['limit']['start']) ;
        
         ($param['sort_by'] != null) ? $this->db->order_by($param['sort_by'], $param['sort_direction']) :'';
         
 		$res = $this->db->get();
-		// echo $this->db->last_query();
+		echo $this->db->last_query();
  		return $res;
 	}
 	

@@ -19,7 +19,7 @@
 				<th field="umur" width="50" sortable="true"><strong>Umur</strong></th>
 				<th field="tmp_lahir" width="100" sortable="true"><strong>Tmp. Lahir</strong></th>
 				<th field="tgl_lahir" width="100" sortable="true"><strong>Tgl. Lahir</strong></th>
-				<th field="status_kependudukan2" width="150" sortable="true"><strong>Stat. Kependudukan</strong></th>
+				<th field="ektp" width="150" sortable="true"><strong>Stat. E-KTP</strong></th>
 				
 		
 				
@@ -29,7 +29,7 @@
 				<th field="dusun" width="100" sortable="true"><strong>Dusun</strong></th>
 				<th field="pendidikan" width="100" sortable="true"><strong>Pendidikan</strong></th>
 				<th field="pekerjaan" width="100" sortable="true"><strong>Pekerjaan</strong></th>
-				<th field="warga_negara" width="100" sortable="true"><strong>WNI/WNA</strong></th>
+				 
 				<th field="status_hidup" width="100" sortable="true"><strong>Hidup/mati</strong></th>
 
 
@@ -78,9 +78,9 @@
 		<?php echo form_dropdown("search_jk",
 		$this->cm->add_arr_head($this->cm->arr_jk,'x','- Semua jenis kelamin - '),'',
 		'id="search_jk"'); ?>
-		<?php echo form_dropdown("search_kaya_miskin",
-		$this->cm->add_arr_head($this->cm->arr_kaya_miskin,'x','- Semua Penduduk - '),'',
-		'id="search_kaya_miskin"'); ?>
+		<?php echo form_dropdown("search_ektp",
+		$this->cm->add_arr_head($this->cm->arr_ektp,'x','- Semua Status EKTP - '),'',
+		'id="search_ektp"'); ?>
 
 
 		<input type="text" id="search_nik2" name="search_nik2" placeholder="NIK" />

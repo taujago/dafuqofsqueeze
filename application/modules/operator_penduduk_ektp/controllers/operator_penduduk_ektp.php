@@ -30,7 +30,7 @@ function index()
    	$data['arr_jk']  = $this->cm->arr_jk;
    	$data['arr_kaya_miskin']  = $this->cm->arr_kaya_miskin;
 
-   	$arr['ektp'] = $this->cm->arr_ektp;
+   	$arr['ektp'] = $this->cm->arr_ektp; 
 
    	//$data['arr_golongan_darah']  = $this->cm->arr_golongan_darah;
    	$data['arr_warga_negara']  = $this->cm->arr_warga_negara;
@@ -51,7 +51,7 @@ function index()
 function get_data(){
     	$page = $_REQUEST['page']; // get the requested page 
         $limit = $_REQUEST['rows']; // get how many rows we want to have into the grid 
-        $sidx = isset($_REQUEST['sort'])?$_REQUEST['sort']:"provinsi"; // get index row - i.e. user click to sort 
+        $sidx = isset($_REQUEST['sort'])?$_REQUEST['sort']:"no_kk"; // get index row - i.e. user click to sort 
         $sord = isset($_REQUEST['order'])?$_REQUEST['order']:"asc"; // get the direction if(!$sidx) $sidx =1;  
         //$id_kecamatan  = isset($_REQUEST['search_id_kecamatan'])?$_REQUEST['search_id_kecamatan']:"x";
         //$id_desa  = isset($_REQUEST['search_id_desa'])?$_REQUEST['search_id_desa']:"x";
@@ -62,7 +62,7 @@ function get_data(){
         $status_kependudukan  = isset($_REQUEST['search_status_kependudukan'])?$_REQUEST['search_status_kependudukan']:"x";
         $status_kawin  = isset($_REQUEST['search_status_kawin'])?$_REQUEST['search_status_kawin']:"x";
         $jk  = isset($_REQUEST['search_jk'])?$_REQUEST['search_jk']:"x";
-        $kaya_miskin  = isset($_REQUEST['search_kaya_miskin'])?$_REQUEST['search_kaya_miskin']:"x";
+        $ektp  = isset($_REQUEST['search_ektp'])?$_REQUEST['search_ektp']:"x";
        
         $req_param = array (
 				"sort_by" => $sidx,
@@ -72,7 +72,7 @@ function get_data(){
 				"nik" => $nik,
 				"no_kk" => $no_kk,
 				"jk" => $jk,
-				"kaya_miskin" => $kaya_miskin,
+				"ektp" => $ektp,
 				"status_kawin" => $status_kawin,
 				"status_kependudukan" => $status_kependudukan,
 				"nama" => $nama,
@@ -139,6 +139,7 @@ function get_data(){
 			$responce->rows[$i]['kecamatan']	 = $result[$i]['kecamatan'] ; 
 			$responce->rows[$i]['id_pendidikan'] = $result[$i]['id_pendidikan'] ;  
 			$responce->rows[$i]['baca_tulis']	 = $result[$i]['baca_tulis'] ;  
+			$responce->rows[$i]['ektp']	 		= ($result[$i]['ektp'] == "0" )?"<span >ADA</span>":"<span style='color:red;'>TIDAK ADA</span>"; 
 			
 			  
  		

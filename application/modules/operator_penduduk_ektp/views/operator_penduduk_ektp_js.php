@@ -335,6 +335,7 @@ function cari(){
          	search_kaya_miskin 			: $("#search_kaya_miskin").val(),
          	search_nik 					: $("#search_nik2").val(),
          	search_no_kk 				: $("#search_no_kk").val(),
+         	search_ektp 				: $("#search_ektp").val(),
          	search_id_dusun 			: $("#search_id_dusun").val()             
            	             
         });  
@@ -348,6 +349,7 @@ function reset_search() {
 	$("#search_jk").val('x').attr('selected','selected');
 	$("#search_kaya_miskin").val('x').attr('selected','selected');
 	$("#search_nik2").val('');
+	$("#search_ektp").val('x').attr('selected','selected'); 
 	$("#search_no_kk").val('');
 	 
 	cari();

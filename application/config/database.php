@@ -49,7 +49,7 @@ $active_group = 'default';
 $active_record = TRUE;
 
 //$db['default']['hostname'] = 'localhost';   
-$db['default']['hostname'] = 'localhost:4418';   
+$db['default']['hostname'] = '192.168.0.101:4418';   
 $db['default']['username'] = 'root';
 $db['default']['password'] = '';
 $db['default']['database'] = 'simdeskel';
