@@ -46,6 +46,7 @@
 			 		<td > Tgl Pulang</td> 
 			 		<td> : <input type="text" name="tgl_pulang" id="tgl_pulang" /></td></td>
 			 	</tr>
+			 	<tr>
 			 	<td> Kelengkapan Berkas</td>
 			 		<td>:  <?php 
 						$lengkap = isset($lengkap)?$lengkap:"";
