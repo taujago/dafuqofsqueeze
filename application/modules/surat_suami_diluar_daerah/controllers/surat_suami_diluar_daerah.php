@@ -101,6 +101,7 @@ class surat_suami_diluar_daerah extends op_controller {
             $responce->rows[$i]['suami_kecamatan']   = $result[$i]['suami_kecamatan'] ;
             $responce->rows[$i]['suami_kota']   = $result[$i]['suami_kota'] ;
             $responce->rows[$i]['suami_provinsi']   = $result[$i]['suami_provinsi'] ;
+            $responce->rows[$i]['lengkap']   = $result[$i]['lengkap'] ;
 
 			$responce->rows[$i]['istri_nama']		= $result[$i]['istri_nama'] ; 
 			$responce->rows[$i]['istri_nik']		= $result[$i]['istri_nik'] ; 
