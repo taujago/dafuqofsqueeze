@@ -100,6 +100,7 @@ class surat_perjanjian extends op_controller {
             $responce->rows[$i]['pihak1_kecamatan']   = $result[$i]['pihak1_kecamatan'] ;
             $responce->rows[$i]['pihak1_kota']   = $result[$i]['pihak1_kota'] ;
             $responce->rows[$i]['pihak1_provinsi']   = $result[$i]['pihak1_provinsi'] ;
+            $responce->rows[$i]['lengkap']   = $result[$i]['lengkap'] ;
 
 			$responce->rows[$i]['pihak2_nama']		= $result[$i]['pihak2_nama'] ; 
 			$responce->rows[$i]['pihak2_nik']		= $result[$i]['pihak2_nik'] ; 
