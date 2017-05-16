@@ -100,6 +100,7 @@ class surat_kematian extends op_controller {
             $responce->rows[$i]['pekerjaan']  = $result[$i]['pekerjaan'] ;
             $responce->rows[$i]['agama']  = $result[$i]['agama'] ;
             $responce->rows[$i]['alamat']  = $result[$i]['alamat'] ;
+              $responce->rows[$i]['lengkap']          = $result[$i]['lengkap'] ; 
             $responce->rows[$i]['dusun']  = $result[$i]['dusun'] ;
             $responce->rows[$i]['provinsi']  = $result[$i]['provinsi'] ;
             $responce->rows[$i]['kabupaten']  = $result[$i]['kabupaten'] ;
