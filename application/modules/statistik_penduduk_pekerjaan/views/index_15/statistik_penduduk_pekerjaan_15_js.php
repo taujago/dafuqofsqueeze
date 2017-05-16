@@ -1,0 +1,32 @@
+<script type="text/javascript">
+
+
+function cetak() {
+	 
+		v_id_pekerjaan = $('#id_pekerjaan').val();
+		window.open('<?php echo site_url("$controller/cetak_15/") ?>/'+v_id_pekerjaan);
+
+
+	
+	 
+}
+
+
+function excel() {
+	 
+		v_id_pekerjaan = $('#id_pekerjaan').val();
+		window.open('<?php echo site_url("$controller/excel/") ?>/'+v_id_pekerjaan);
+	
+	 
+}
+
+function cari(){
+	      $('#tt').datagrid('load',{                         
+         	id_pekerjaan 				: $('#id_pekerjaan').val()
+         	       
+           	             
+        });  
+}
+ 
+
+</script>
