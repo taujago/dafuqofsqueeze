@@ -92,7 +92,8 @@ class surat_ijin_pesta extends op_controller {
                $responce->rows[$i]['hiburan']       = $result[$i]['hiburan'];     
             $responce->rows[$i]['tmp_lahir']  = $result[$i]['tmp_lahir'] ;             
             $responce->rows[$i]['tgl_lahir']  = $result[$i]['tgl_lahir'] ;    
-             $responce->rows[$i]['jk']          = $result[$i]['jk'] ;    
+             $responce->rows[$i]['jk']          = $result[$i]['jk'] ; 
+                $responce->rows[$i]['lengkap']          = $result[$i]['lengkap'] ;    
                    
             $responce->rows[$i]['ttd']          = $result[$i]['ttd'] ; 
             $responce->rows[$i]['nip']          = $result[$i]['nip'] ; 
