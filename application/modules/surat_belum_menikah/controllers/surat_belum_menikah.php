@@ -88,6 +88,7 @@ class surat_belum_menikah extends op_controller {
             $responce->rows[$i]['tanggal']      = flipdate($result[$i]['tanggal']) ;
             $responce->rows[$i]['id_penduduk']  = $result[$i]['id_penduduk'] ;
             $responce->rows[$i]['nik']          = $result[$i]['nik'] ;
+            $responce->rows[$i]['lengkap']          = $result[$i]['lengkap'] ; 
 
             $responce->rows[$i]['nama']         = $result[$i]['nama']; 
             $responce->rows[$i]['alamat']       = $result[$i]['alamat'];     
@@ -115,7 +116,8 @@ class surat_belum_menikah extends op_controller {
         $data = $this->input->post();
         $this->load->library('form_validation');
         $this->form_validation->set_rules('nik','NIK Pemohon','required');    
-        $this->form_validation->set_rules('no_surat','Nomor surat','required');              
+        $this->form_validation->set_rules('no_surat','Nomor surat','required');  
+       $this->form_validation->set_rules('lengkap','Kelengkapan Berkas','required');              
         $this->form_validation->set_message('required', ' %s Harus diisi '); 
         $this->form_validation->set_message('numeric', ' %s Harus diisi dengan angka ');
         $this->form_validation->set_message('alpha', ' %s Harus diisi dengan huruf ');
