@@ -59,6 +59,14 @@
 			 		<td >  Batas Timur</td> 
 			 		<td> : <input type="text" name="batas_timur" id="batas_timur" />  </td>
 			 	</tr>
+			 		<tr>
+			 		<td>Kelengkapan Berkas</td>
+			 		<td> : 	<?php
+        					echo form_radio('lengkap','0',TRUE).'Berkas Lengkap ';
+        					echo form_radio('lengkap','1').'Berkas Tidak Lengkap';
+   							?>
+   					</td>
+			 	</tr>
 
 			 	 
 

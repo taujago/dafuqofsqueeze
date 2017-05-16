@@ -97,7 +97,8 @@ class surat_domisili extends op_controller {
              $responce->rows[$i]['ttd']          = $result[$i]['ttd'] ; 
             $responce->rows[$i]['ttd_nama']          = $result[$i]['ttd_nama'] ; 
             $responce->rows[$i]['ttd_jabatan']          = $result[$i]['ttd_jabatan'] ; 
-            $responce->rows[$i]['ttd']          = $result[$i]['ttd'] ; 
+            $responce->rows[$i]['ttd']          = $result[$i]['ttd'] ;
+            $responce->rows[$i]['lengkap']          = $result[$i]['lengkap'] ;
             $responce->rows[$i]['nip']          = $result[$i]['nip'] ; 
             $responce->rows[$i]['penandatangan_nama']          = $result[$i]['ttd_nama'] ; 
             $responce->rows[$i]['pangkat']          = $result[$i]['pangkat'] ; 
@@ -114,7 +115,8 @@ class surat_domisili extends op_controller {
         $data = $this->input->post();
         $this->load->library('form_validation');
         $this->form_validation->set_rules('nik','NIK ','required');    
-        $this->form_validation->set_rules('no_surat','Nomor surat','required');              
+        $this->form_validation->set_rules('no_surat','Nomor surat','required'); 
+                
         $this->form_validation->set_message('required', ' %s Harus diisi '); 
         $this->form_validation->set_message('numeric', ' %s Harus diisi dengan angka ');
         $this->form_validation->set_message('alpha', ' %s Harus diisi dengan huruf ');

@@ -19,6 +19,12 @@
 			 			cari </a>
 			 		</td></td>
 			 	</tr>
+			 	<td> Kelengkapan Berkas</td>
+			 		<td>:  <?php 
+						$lengkap = isset($lengkap)?$lengkap:"";
+						echo form_dropdown("lengkap",$this->cm->arr_lengkap(),$lengkap,'id="lengkap"') ?></td>
+					</td>
+				</tr>
 			 	 
 		 </table>
 			 

@@ -93,7 +93,8 @@ class surat_kepemilikan_tanah extends op_controller {
             $responce->rows[$i]['jenis_tanah']  = $result[$i]['jenis_tanah'] ;
             $responce->rows[$i]['alamat_tanah']	= $result[$i]['alamat_tanah'] ;
             $responce->rows[$i]['blok']		    = $result[$i]['blok'] ;
-            $responce->rows[$i]['persil']	    =  $result[$i]['persil'] ;    
+            $responce->rows[$i]['persil']	    =  $result[$i]['persil'] ; 
+             $responce->rows[$i]['lengkap']      =  $result[$i]['lengkap'] ;    
             $responce->rows[$i]['luas']	        = $result[$i]['luas'] ;  
             $responce->rows[$i]['dimiliki_sejak']	= flipdate($result[$i]['dimiliki_sejak']) ;    
  			$responce->rows[$i]['batas_selatan']	= $result[$i]['batas_selatan'] ;  
