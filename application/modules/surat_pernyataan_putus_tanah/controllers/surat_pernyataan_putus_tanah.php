@@ -123,6 +123,7 @@ class surat_pernyataan_putus_tanah extends op_controller {
 			$responce->rows[$i]['saksi_3']	= $result[$i]['saksi_3'] ; 
 			$responce->rows[$i]['saksi_4']	= $result[$i]['saksi_4'] ; 
 			$responce->rows[$i]['nama_ketua_rt']	= $result[$i]['nama_ketua_rt'] ; 
+            $responce->rows[$i]['lengkap']    = $result[$i]['lengkap'] ; 
 			
             $responce->rows[$i]['ttd']          = $result[$i]['ttd'] ; 
             $responce->rows[$i]['ttd_nama']          = $result[$i]['ttd_nama'] ; 
