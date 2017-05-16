@@ -124,6 +124,7 @@ class surat_jual_beli_tanah extends op_controller {
 			
 			$responce->rows[$i]['alamat_tanah']          = $result[$i]['alamat_tanah'] ;
 			$responce->rows[$i]['rt_tanah']          = $result[$i]['rt_tanah'] ;
+            $responce->rows[$i]['lengkap']          = $result[$i]['lengkap'] ;
 			
 			$responce->rows[$i]['kaur_pemerintahan']          = $result[$i]['kaur_pemerintahan'] ;
 			$responce->rows[$i]['notulis']          = $result[$i]['notulis'] ;

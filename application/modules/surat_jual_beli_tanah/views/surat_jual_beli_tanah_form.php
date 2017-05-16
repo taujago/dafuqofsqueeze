@@ -205,6 +205,18 @@
 			 </table>
 			 
 			</fieldset>
+			<fieldset>
+				<legend>Kelengkapan Berkas</legend>
+				<table>
+					<tr>
+			 			<?php
+        					echo form_radio('lengkap','0',TRUE).'Berkas Lengkap ';
+        					echo form_radio('lengkap','1').'Berkas Tidak Lengkap';
+   							?>
+   					
+			 	</tr>
+				</table>
+			</fieldset>
 		  
 			<fieldset> <legend><strong>Pejabat </strong></legend>
 				<table width="661">
