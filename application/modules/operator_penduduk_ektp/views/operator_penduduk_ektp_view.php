@@ -46,9 +46,9 @@
 		<a href="#" class="easyui-linkbutton" iconCls="icon-detail" plain="true" onclick="detail()">Detail</a> -->
 		<a href="#" class="easyui-linkbutton" iconCls="icon-ok" plain="true" onclick="ada();">Memiliki E-KTP</a>
 		<a href="#" class="easyui-linkbutton" iconCls="	icon-remove" plain="true" onclick="tidakada();">Tidak Memiliki E-KTP</a>
-		<a href="statistik_penduduk_kaya_miskin" class="easyui-linkbutton" iconCls="icon-viewlist" plain="true" >Lihat Penduduk Miskin</a>
-		<a href="#" class="easyui-linkbutton" iconCls="icon-print" plain="true" onclick="cetak_kaya_miskin();">Cetak</a>
-	 	 <a href="#" class="easyui-linkbutton" iconCls="icon-excel" plain="true" onclick="excel_kaya_miskin();">Export Excel</a>
+		<!-- <a href="statistik_penduduk_kaya_miskin" class="easyui-linkbutton" iconCls="icon-viewlist" plain="true" >Lihat Penduduk Miskin</a> -->
+		<a href="#" class="easyui-linkbutton" iconCls="icon-print" plain="true" onclick="cetak();">Cetak</a>
+	 	 <a href="#" class="easyui-linkbutton" iconCls="icon-excel" plain="true" onclick="excel();">Export Excel</a>
 		<br />
 		 
 	</div>

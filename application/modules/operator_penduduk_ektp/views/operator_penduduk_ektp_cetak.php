@@ -41,7 +41,7 @@ $desa2 = $this->cm->data_desa();
 <br />
 
 <p style="text-align:center">
-<span class="judul">DATA PENDUDUK EKTP </span><br />
+<span class="judul">DATA PENDUDUK <?php echo $judul; ?> </span><br />
 <span class="judul"><?php echo  strtoupper($desa2->kota ) ?></span><BR />
 <span class="judul">KECAMATAN <?php echo  strtoupper($desa2->kecamatan ) ?></span><br />
 <span class="judul"> <?php echo  strtoupper($desa2->bentuk_lembaga." ".$desa2->desa ) ?></span><br />

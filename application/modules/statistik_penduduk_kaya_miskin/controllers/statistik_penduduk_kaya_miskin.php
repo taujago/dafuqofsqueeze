@@ -273,7 +273,7 @@ function get_data(){
          $pdf->Output($data['header']. $this->session->userdata("tahun") .'.pdf', 'I');
 
 }
-		function excel(){
+function excel(){
 
        $this->db->select('*')->from('v_penduduk p')
     ->join('pendidikan pdk','pdk.id_pendidikan = p.id_pendidikan','left')

@@ -281,13 +281,15 @@ function tidakada() {
  // }
 
 
- function cetak() {
+ function cetak($status) {
  	 
 
-    $data['record'] = $this->dm->rec_data(0);
+    $data['record'] = $this->dm->rec_data($status);
     $id_desa =   $this->session->userdata("operator_id_desa");
-    $data['l'] =  $this->dm->get_stat('L'); //$this->dm->get_data(array("jk"=>"l","id_desa"=>$id_desa))->num_rows();
-    $data['p'] =  $this->dm->get_stat('P'); //$this->dm->get_data(array("jk"=>"p","id_desa"=>$id_desa))->num_rows();
+    $data['l'] =  $this->dm->get_stat('L',$status); //$this->dm->get_data(array("jk"=>"l","id_desa"=>$id_desa))->num_rows();
+    $data['p'] =  $this->dm->get_stat('P',$status); //$this->dm->get_data(array("jk"=>"p","id_desa"=>$id_desa))->num_rows();
+
+    $data['judul'] = ($status=="0")?" BELUM MEMILIKI EKTP":"MEMILIKI EKTP";
     
 
 	$this->load->view("operator_penduduk_ektp_cetak",$data); 	
@@ -295,84 +297,466 @@ function tidakada() {
 
 
  }
+ function excelagama($id_agama){
 
- function pdf($id_penduduk) {
-
- 	$this->db->select('*')->from('v_penduduk p')
- 	->join('kk_anggota kk','p.id_penduduk=kk.id_penduduk','left')
- 	->where("p.id_penduduk",$id_penduduk)
- 	->where("p.id_desa",$this->session->userdata("operator_id_desa"));
-
- 	$res = $this->db->get();
- 	$data=$res->row_array();
-	
- 	$this->cm->data_desa();
-	$temp = $this->dm->get_all_data($id_penduduk);
-	$data = array_merge($data,$temp);
-	
- 	$data['nama_camat'] = $this->cm->desa->nama_camat;	 
-    $data['controller'] = get_class($this);       
-    $data['header'] = "BIODATA PENDUDUK ";
-  
-
-        $this->load->library('Pdf');
-        $pdf = new Pdf('L', 'mm', 'F4', true, 'UTF-8', false);
-        $pdf->SetTitle( $data['header']);
-        //$pdf->SetHeaderMargin(30);
-        //$pdf->SetTopMargin(10);
-
- 
+    $this->db->where("id_agama",$id_agama);
+    $agama  = $this->db->get("agama")->row();
 
 
+
+        $this->db->select('*,p.no_kk')->from('v_penduduk p')
+        ->join('pendidikan pdk','pdk.id_pendidikan = p.id_pendidikan','left')
+        ->join('kk_anggota kk','kk.id_penduduk = p.id_penduduk','left')
+        ->join('pekerjaan pk','pk.id_pekerjaan = p.id_pekerjaan','left');
+
+        $this->db->where("p.hidup_mati",1)->where("p.status_kependudukan<>3",NULL,FALSE);
+        $this->db->where("id_agama",$id_agama);
+        $this->db->order_by('p.no_kk, kk.urutan');
+
+        $res = $this->db->get();
+
+       // echo $this->db->last_query(); exit;
+
+        $this->load->library('Excel');
+        $this->excel->setActiveSheetIndex(0);
+        $this->excel->getActiveSheet()->setTitle('Data Penduduk Agama ');
+
+         $arr_kolom = array('a','b','c','d','e','f','g','h','i','j','k','l','m');
+
+        $this->excel->getActiveSheet()->getColumnDimension('A')->setWidth(5);
+        $this->excel->getActiveSheet()->getColumnDimension('B')->setWidth(18);  // nomor kk  
+        $this->excel->getActiveSheet()->getColumnDimension('C')->setWidth(18);  // nik 
+        $this->excel->getActiveSheet()->getColumnDimension('D')->setWidth(31); // nama 
+        $this->excel->getActiveSheet()->getColumnDimension('E')->setWidth(10);  // umur 
+        $this->excel->getActiveSheet()->getColumnDimension('F')->setWidth(18); // tmp lahir 
+        $this->excel->getActiveSheet()->getColumnDimension('G')->setWidth(18);  // tgl lahir 
+        $this->excel->getActiveSheet()->getColumnDimension('H')->setWidth(30);  // alamat 
+        $this->excel->getActiveSheet()->getColumnDimension('I')->setWidth(5);  // rt 
+        $this->excel->getActiveSheet()->getColumnDimension('J')->setWidth(5); // rw
+        $this->excel->getActiveSheet()->getColumnDimension('K')->setWidth(18);  // hubungan dalam kelurga 
+        $this->excel->getActiveSheet()->getColumnDimension('L')->setWidth(18);  // Pendidikan
+        $this->excel->getActiveSheet()->getColumnDimension('M')->setWidth(18);  
          
-        $pdf->SetMargins(10, 10, 10);
-        $pdf->SetHeaderMargin(10);
-        $pdf->SetFooterMargin(10);
-        $pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
+        $data_desa = $this->cm->data_desa();
+        $baris = 1;
 
-        $pdf->SetAutoPageBreak(true,10);
-        $pdf->SetAuthor('PKPD  taujago@gmail.com');
+        $this->excel->getActiveSheet()->mergeCells('a'.$baris.':m'.$baris);
+         $this->excel->getActiveSheet()
+                ->setCellValue('A' . $baris, "DATA PENDUDUK AGAMA");
+       
+       $this->format_center($arr_kolom,$baris);
+
+        // $this->format_baris(
+        //     array("arr_kolom"=>$arr_kolom, 
+        //          "baris"=>$baris,
+        //          "bold"=>true,
+        //          "align"=>true) );
+
+        $baris++; 
+
+        $this->excel->getActiveSheet()->mergeCells('a'.$baris.':m'.$baris);
+         $this->excel->getActiveSheet()
+                ->setCellValue('A' . $baris, "PEMERINTAH DESA  " .$data_desa->desa );
+        $this->format_center($arr_kolom,$baris);
+        $baris++; 
+
+
+        $this->excel->getActiveSheet()->mergeCells('a'.$baris.':m'.$baris);
+         $this->excel->getActiveSheet()
+                ->setCellValue('A' . $baris, "KECAMATAN" .$data_desa->kecamatan );
+        $this->format_center($arr_kolom,$baris);
+        $baris++; 
+
+        $this->excel->getActiveSheet()->mergeCells('a'.$baris.':m'.$baris);
+         $this->excel->getActiveSheet()
+                ->setCellValue('A' . $baris, $data_desa->kota );
+        $this->format_center($arr_kolom,$baris);
+
+
+        $baris++; 
+         $this->excel->getActiveSheet()
+              
+                ->setCellValue('B' . $baris, "AGAMA $agama->agama");
+
+        $baris = 8;
+
+        $this->excel->getActiveSheet()
+                ->setCellValue('A' . $baris, "NO.")
+                ->setCellValue('B' . $baris, "NOMOR KK")
+                ->setCellValue('C' . $baris, "NIK")
+                ->setCellValue('D' . $baris, "NAMA")
+                ->setCellValue('E' . $baris, "UMUR")      
+                ->setCellValue('F' . $baris, "TEMPAT LAHIR")
+                ->setCellValue('G' . $baris, "TANGGAL LAHIR")
+                ->setCellValue('H' . $baris, "ALAMAT")
+                ->setCellValue('I' . $baris, "RT")
+                ->setCellValue('J' . $baris, "RW")
+                ->setCellValue('K' . $baris, "HUBUNGAN DLM. KELUARGA")
+                ->setCellValue('L' . $baris, "PENDIDIKAN")
+                ->setCellValue('M' . $baris, "PEKERJAAN") ;     
+
+
+
+               
+                $this->format_header($arr_kolom,$baris);
+
+                $baris++;
+                $n=0;
+                foreach($res->result() as $row) : 
+                $n++;
+                $this->excel->getActiveSheet()
+                ->setCellValue('A' . $baris, $n)
+                ->setCellValueExplicit('B' . $baris, "$row->no_kk")
+                ->setCellValueExplicit('C' . $baris, "$row->nik")
+                ->setCellValue('D' . $baris, $row->nama)
+                ->setCellValue('E' . $baris, $row->umur)      
+                ->setCellValue('F' . $baris, $row->tmp_lahir)
+                ->setCellValue('G' . $baris, $row->tgl_lahir)
+                ->setCellValue('H' . $baris, $row->alamat)
+                ->setCellValue('I' . $baris, $row->rt)
+                ->setCellValue('J' . $baris, $row->rw)
+                ->setCellValue('K' . $baris, $row->hubungan_dlm_keluarga)
+                ->setCellValue('L' . $baris, $row->pendidikan)
+                ->setCellValue('M' . $baris, $row->pekerjaan) ;  
+
+                $this->format_baris($arr_kolom,$baris);
+                $baris++;
+                endforeach;
+
+
+
+
+
+        $filename = "LAPORAN DATA PENDUDUK AGAMA .xls";
+
+        //exit;
+
+        header('Content-Type: application/vnd.ms-excel'); //mime type
+        header('Content-Disposition: attachment;filename="'.$filename.'"'); //tell browser what's the file name
+        header('Cache-Control: max-age=0'); //no cache
+                     
+        //save it to Excel5 format (excel 2003 .XLS file), change this to 'Excel2007' (and adjust the filename extension, also the header mime type)
+        //if you want to save it as .XLSX Excel 2007 format
+        $objWriter = PHPExcel_IOFactory::createWriter($this->excel, 'Excel2007');  
+        //force user to download the Excel file without writing it to server's HD
+        $objWriter->save('php://output');
+
+
+ }
+
+function excel($status) {
+		$this->load->library('Excel');
+        $this->excel->setActiveSheetIndex(0);
+        $this->excel->getActiveSheet()->setTitle('EKTP');
+
+        $arr_kolom = array('a','b','c','d','e','f','g','h','i','j','k','l','m');
+
+       /* $this->excel->getActiveSheet()->getColumnDimension('A')->setWidth(5);
+        $this->excel->getActiveSheet()->getColumnDimension('B')->setWidth(18);  // nomor kk  
+        $this->excel->getActiveSheet()->getColumnDimension('C')->setWidth(18);  // nik 
+        $this->excel->getActiveSheet()->getColumnDimension('D')->setWidth(31); // nama 
+        $this->excel->getActiveSheet()->getColumnDimension('E')->setWidth(10);  // umur 
+        $this->excel->getActiveSheet()->getColumnDimension('F')->setWidth(18); // tmp lahir 
+        $this->excel->getActiveSheet()->getColumnDimension('G')->setWidth(18);  // tgl lahir 
+        $this->excel->getActiveSheet()->getColumnDimension('H')->setWidth(30);  // alamat 
+        $this->excel->getActiveSheet()->getColumnDimension('I')->setWidth(5);  // rt 
+        $this->excel->getActiveSheet()->getColumnDimension('J')->setWidth(5); // rw
+        $this->excel->getActiveSheet()->getColumnDimension('K')->setWidth(18);  // hubungan dalam kelurga 
+        $this->excel->getActiveSheet()->getColumnDimension('L')->setWidth(18);  // Pendidikan
+        $this->excel->getActiveSheet()->getColumnDimension('M')->setWidth(18);   */ 
+
+        $filename = "LAPORAN.xls";
+
+        header('Content-Type: application/vnd.ms-excel'); //mime type
+        header('Content-Disposition: attachment;filename="'.$filename.'"'); //tell browser what's the file name
+        header('Cache-Control: max-age=0'); //no cache
+                     
+        //save it to Excel5 format (excel 2003 .XLS file), change this to 'Excel2007' (and adjust the filename extension, also the header mime type)
+        //if you want to save it as .XLSX Excel 2007 format
+        $objWriter = PHPExcel_IOFactory::createWriter($this->excel, 'Excel2007');  
+        //force user to download the Excel file without writing it to server's HD
+        $objWriter->save('php://output');
+}
+
+
+function excelxy($status){
+	$id_agama = 1;
+    $this->db->where("id_agama",$id_agama);
+    $agama  = $this->db->get("agama")->row();
+
+
+
+        $this->db->select('*,p.no_kk')->from('v_penduduk p')
+        ->join('pendidikan pdk','pdk.id_pendidikan = p.id_pendidikan','left')
+        ->join('kk_anggota kk','kk.id_penduduk = p.id_penduduk','left')
+        ->join('pekerjaan pk','pk.id_pekerjaan = p.id_pekerjaan','left');
+
+        $this->db->where("p.hidup_mati",1)->where("p.status_kependudukan<>3",NULL,FALSE);
+        $this->db->where("id_agama",$id_agama);
+        $this->db->order_by('p.no_kk, kk.urutan');
+
+        $res = $this->db->get();
+
+       // echo $this->db->last_query(); exit;
+
+        $this->load->library('Excel');
+        $this->excel->setActiveSheetIndex(0);
+        $this->excel->getActiveSheet()->setTitle('Data Penduduk Agama ');
+
+         $arr_kolom = array('a','b','c','d','e','f','g','h','i','j','k','l','m');
+
+        $this->excel->getActiveSheet()->getColumnDimension('A')->setWidth(5);
+        $this->excel->getActiveSheet()->getColumnDimension('B')->setWidth(18);  // nomor kk  
+        $this->excel->getActiveSheet()->getColumnDimension('C')->setWidth(18);  // nik 
+        $this->excel->getActiveSheet()->getColumnDimension('D')->setWidth(31); // nama 
+        $this->excel->getActiveSheet()->getColumnDimension('E')->setWidth(10);  // umur 
+        $this->excel->getActiveSheet()->getColumnDimension('F')->setWidth(18); // tmp lahir 
+        $this->excel->getActiveSheet()->getColumnDimension('G')->setWidth(18);  // tgl lahir 
+        $this->excel->getActiveSheet()->getColumnDimension('H')->setWidth(30);  // alamat 
+        $this->excel->getActiveSheet()->getColumnDimension('I')->setWidth(5);  // rt 
+        $this->excel->getActiveSheet()->getColumnDimension('J')->setWidth(5); // rw
+        $this->excel->getActiveSheet()->getColumnDimension('K')->setWidth(18);  // hubungan dalam kelurga 
+        $this->excel->getActiveSheet()->getColumnDimension('L')->setWidth(18);  // Pendidikan
+        $this->excel->getActiveSheet()->getColumnDimension('M')->setWidth(18);  
          
-            
-        $pdf->setPrintHeader(false);
-        $pdf->setPrintFooter(true);
+        $data_desa = $this->cm->data_desa();
+        $baris = 1;
 
-         // add a page
-        $pdf->AddPage('P');
+        $this->excel->getActiveSheet()->mergeCells('a'.$baris.':m'.$baris);
+         $this->excel->getActiveSheet()
+                ->setCellValue('A' . $baris, "DATA PENDUDUK AGAMA");
+       
+       $this->format_center($arr_kolom,$baris);
 
- 
+        // $this->format_baris(
+        //     array("arr_kolom"=>$arr_kolom, 
+        //          "baris"=>$baris,
+        //          "bold"=>true,
+        //          "align"=>true) );
+
+        $baris++; 
+
+        $this->excel->getActiveSheet()->mergeCells('a'.$baris.':m'.$baris);
+         $this->excel->getActiveSheet()
+                ->setCellValue('A' . $baris, "PEMERINTAH DESA  " .$data_desa->desa );
+        $this->format_center($arr_kolom,$baris);
+        $baris++; 
 
 
-         $html = $this->load->view("pdf/pdf_biodata",$data,true);
-         $pdf->writeHTML($html, true, false, true, false, '');
+        $this->excel->getActiveSheet()->mergeCells('a'.$baris.':m'.$baris);
+         $this->excel->getActiveSheet()
+                ->setCellValue('A' . $baris, "KECAMATAN" .$data_desa->kecamatan );
+        $this->format_center($arr_kolom,$baris);
+        $baris++; 
+
+        $this->excel->getActiveSheet()->mergeCells('a'.$baris.':m'.$baris);
+         $this->excel->getActiveSheet()
+                ->setCellValue('A' . $baris, $data_desa->kota );
+        $this->format_center($arr_kolom,$baris);
 
 
-  
+        $baris++; 
+         $this->excel->getActiveSheet()
+              
+                ->setCellValue('B' . $baris, "AGAMA");
 
-         $pdf->Output($data['header']. $this->session->userdata("tahun") .'.pdf', 'I');
-	
+        $baris = 8;
 
+        $this->excel->getActiveSheet()
+                ->setCellValue('A' . $baris, "NO.")
+                ->setCellValue('B' . $baris, "NOMOR KK")
+                ->setCellValue('C' . $baris, "NIK")
+                ->setCellValue('D' . $baris, "NAMA")
+                ->setCellValue('E' . $baris, "UMUR")      
+                ->setCellValue('F' . $baris, "TEMPAT LAHIR")
+                ->setCellValue('G' . $baris, "TANGGAL LAHIR")
+                ->setCellValue('H' . $baris, "ALAMAT")
+                ->setCellValue('I' . $baris, "RT")
+                ->setCellValue('J' . $baris, "RW")
+                ->setCellValue('K' . $baris, "HUBUNGAN DLM. KELUARGA")
+                ->setCellValue('L' . $baris, "PENDIDIKAN")
+                ->setCellValue('M' . $baris, "PEKERJAAN") ;     
+
+
+
+               
+                $this->format_header($arr_kolom,$baris);
+
+                $baris++;
+                $n=0;
+                foreach($res->result() as $row) : 
+                $n++;
+                $this->excel->getActiveSheet()
+                ->setCellValue('A' . $baris, $n)
+                ->setCellValueExplicit('B' . $baris, "$row->no_kk")
+                ->setCellValueExplicit('C' . $baris, "$row->nik")
+                ->setCellValue('D' . $baris, $row->nama)
+                ->setCellValue('E' . $baris, $row->umur)      
+                ->setCellValue('F' . $baris, $row->tmp_lahir)
+                ->setCellValue('G' . $baris, $row->tgl_lahir)
+                ->setCellValue('H' . $baris, $row->alamat)
+                ->setCellValue('I' . $baris, $row->rt)
+                ->setCellValue('J' . $baris, $row->rw)
+                ->setCellValue('K' . $baris, $row->hubungan_dlm_keluarga)
+                ->setCellValue('L' . $baris, $row->pendidikan)
+                ->setCellValue('M' . $baris, $row->pekerjaan) ;  
+
+                $this->format_baris($arr_kolom,$baris);
+                $baris++;
+                endforeach;
+
+
+
+
+
+        $filename = "LAPORAN DATA PENDUDUK AGAMA .xls";
+
+        //exit;
+
+        header('Content-Type: application/vnd.ms-excel'); //mime type
+        header('Content-Disposition: attachment;filename="'.$filename.'"'); //tell browser what's the file name
+        header('Cache-Control: max-age=0'); //no cache
+                     
+        //save it to Excel5 format (excel 2003 .XLS file), change this to 'Excel2007' (and adjust the filename extension, also the header mime type)
+        //if you want to save it as .XLSX Excel 2007 format
+        $objWriter = PHPExcel_IOFactory::createWriter($this->excel, 'Excel2007');  
+        //force user to download the Excel file without writing it to server's HD
+        $objWriter->save('php://output');
 
 
  }
 
- function json_detail($id_penduduk) {
- 	$this->db->where("id_penduduk",$id_penduduk);
- 	$res = $this->db->get("v_penduduk");
- 	$data = $res->row_array();
- 	echo json_encode($data);
+
+
+
+ function excelx($status){
+
+      
+ 		$judul = ($status=="0")?" BELUM MEMILIKI EKTP":"MEMILIKI EKTP";
+
+        $res = $this->dm->rec_data($status);
+
+       // echo $this->db->last_query(); exit;
+
+        $this->load->library('Excel');
+        $this->excel->setActiveSheetIndex(0);
+        $this->excel->getActiveSheet()->setTitle('EKTP');
+
+         $arr_kolom = array('a','b','c','d','e','f','g','h','i','j','k','l','m');
+
+        $this->excel->getActiveSheet()->getColumnDimension('A')->setWidth(5);
+        $this->excel->getActiveSheet()->getColumnDimension('B')->setWidth(18);  // nomor kk  
+        $this->excel->getActiveSheet()->getColumnDimension('C')->setWidth(18);  // nik 
+        $this->excel->getActiveSheet()->getColumnDimension('D')->setWidth(31); // nama 
+        $this->excel->getActiveSheet()->getColumnDimension('E')->setWidth(10);  // umur 
+        $this->excel->getActiveSheet()->getColumnDimension('F')->setWidth(18); // tmp lahir 
+        $this->excel->getActiveSheet()->getColumnDimension('G')->setWidth(18);  // tgl lahir 
+        $this->excel->getActiveSheet()->getColumnDimension('H')->setWidth(30);  // alamat 
+        $this->excel->getActiveSheet()->getColumnDimension('I')->setWidth(5);  // rt 
+        $this->excel->getActiveSheet()->getColumnDimension('J')->setWidth(5); // rw
+        $this->excel->getActiveSheet()->getColumnDimension('K')->setWidth(18);  // hubungan dalam kelurga 
+        $this->excel->getActiveSheet()->getColumnDimension('L')->setWidth(18);  // Pendidikan
+        $this->excel->getActiveSheet()->getColumnDimension('M')->setWidth(18);  
+         
+        $data_desa = $this->cm->data_desa();
+        $baris = 1;
+
+         /* 
+        $this->excel->getActiveSheet()->mergeCells('a'.$baris.':m'.$baris);
+         $this->excel->getActiveSheet()
+                ->setCellValue('A' . $baris, "DATA PENDUDUK $judul");
+       
+       $this->format_center($arr_kolom,$baris);
+
+        
+
+        $baris++; 
+
+        $this->excel->getActiveSheet()->mergeCells('a'.$baris.':m'.$baris);
+         $this->excel->getActiveSheet()
+                ->setCellValue('A' . $baris, "PEMERINTAH DESA  " .$data_desa->desa );
+        $this->format_center($arr_kolom,$baris);
+        $baris++; 
+
+
+        $this->excel->getActiveSheet()->mergeCells('a'.$baris.':m'.$baris);
+         $this->excel->getActiveSheet()
+                ->setCellValue('A' . $baris, "KECAMATAN" .$data_desa->kecamatan );
+        $this->format_center($arr_kolom,$baris);
+        $baris++; 
+
+        $this->excel->getActiveSheet()->mergeCells('a'.$baris.':m'.$baris);
+         $this->excel->getActiveSheet()
+                ->setCellValue('A' . $baris, $data_desa->kota );
+        $this->format_center($arr_kolom,$baris);
+
+
+       
+        $baris = 6;
+
+        $this->excel->getActiveSheet()
+                ->setCellValue('A' . $baris, "NO.")
+                ->setCellValue('B' . $baris, "NOMOR KK")
+                ->setCellValue('C' . $baris, "NIK")
+                ->setCellValue('D' . $baris, "NAMA")
+                ->setCellValue('E' . $baris, "UMUR")      
+                ->setCellValue('F' . $baris, "TEMPAT LAHIR")
+                ->setCellValue('G' . $baris, "TANGGAL LAHIR")
+                ->setCellValue('H' . $baris, "ALAMAT")
+                ->setCellValue('I' . $baris, "RT")
+                ->setCellValue('J' . $baris, "RW")
+                ->setCellValue('K' . $baris, "HUBUNGAN DLM. KELUARGA")
+                ->setCellValue('L' . $baris, "PENDIDIKAN")
+                ->setCellValue('M' . $baris, "PEKERJAAN") ;     
+
+
+
+               
+    $this->format_header($arr_kolom,$baris);
+
+    $baris++;
+    $n=0;
+    foreach($res->result() as $row) : 
+    $n++;
+    $this->excel->getActiveSheet()
+    ->setCellValue('A' . $baris, $n)
+    ->setCellValueExplicit('B' . $baris, "$row->no_kk")
+    ->setCellValueExplicit('C' . $baris, "$row->nik")
+    ->setCellValue('D' . $baris, $row->nama)
+    ->setCellValue('E' . $baris, $row->umur)      
+    ->setCellValue('F' . $baris, $row->tmp_lahir)
+    ->setCellValue('G' . $baris, $row->tgl_lahir)
+    ->setCellValue('H' . $baris, $row->alamat)
+    ->setCellValue('I' . $baris, $row->rt)
+    ->setCellValue('J' . $baris, $row->rw)
+    ->setCellValue('K' . $baris, $row->hubungan_dlm_keluarga)
+    ->setCellValue('L' . $baris, $row->pendidikan)
+    ->setCellValue('M' . $baris, $row->pekerjaan) ;  
+
+    $this->format_baris($arr_kolom,$baris);
+    $baris++;
+    endforeach; */ 
+
+
+
+
+
+        $filename = "PENDUDUK EKTP.xls";
+
+        //exit;
+
+        header('Content-Type: application/vnd.ms-excel'); //mime type
+        header('Content-Disposition: attachment;filename="'.$filename.'"'); //tell browser what's the file name
+        header('Cache-Control: max-age=0'); //no cache
+                     
+        //save it to Excel5 format (excel 2003 .XLS file), change this to 'Excel2007' (and adjust the filename extension, also the header mime type)
+        //if you want to save it as .XLSX Excel 2007 format
+        $objWriter = PHPExcel_IOFactory::createWriter($this->excel, 'Excel2007');  
+        //force user to download the Excel file without writing it to server's HD
+        $objWriter->save('php://output');
+
+
  }
-
- 
-
- function get_temp_nik(){
- 	  
- 	echo $this->am->get_temp_nik();
- }
-
-
-
-
  
 
 	

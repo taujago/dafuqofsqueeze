@@ -43,5 +43,22 @@ class penam extends CI_Model
 		return $res->num_rows();
 	}
 	
+
+
+	
+function rec_data($status) {
+	$this->db->select('*')->from('v_penduduk p');
+		 
+	$this->db->where("status","1");
+	$this->db->where("hidup_mati","1");
+	$this->db->where(" ( umur >= 17 or status_kawin <> '1' ) ",null,false);
+	$this->db->where("ektp",$status);
+
+	$res = $this->db->get();
+	// echo $this->db->last_query(); 
+	return $res;
+}
+
+
 	
 }
