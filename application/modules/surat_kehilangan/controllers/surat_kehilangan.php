@@ -91,6 +91,7 @@ class surat_kehilangan extends op_controller {
             $responce->rows[$i]['nama']                 = $result[$i]['nama']; 
             $responce->rows[$i]['alamat']               = $result[$i]['alamat'];     
             $responce->rows[$i]['kehilangan']            = $result[$i]['kehilangan'] ;
+             $responce->rows[$i]['lengkap']          = $result[$i]['lengkap'] ; 
             $responce->rows[$i]['ket_surat']            = $result[$i]['ket_surat'] ;
             $responce->rows[$i]['ttd']                  = $result[$i]['ttd'] ; 
             $responce->rows[$i]['ttd_nama']          = $result[$i]['ttd_nama'] ; 

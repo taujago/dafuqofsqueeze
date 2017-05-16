@@ -26,7 +26,9 @@
 			</table>
 			 
 			</fieldset>
-			
+			<?php
+					$this->load->view("berkas");
+				?>
             <fieldset> <legend> <b>Keterangan Surat </b></legend>
             <textarea class="ckeditor" cols="80" id="ket_surat" name="ket_surat" rows="10"></textarea>
             </fieldset>
