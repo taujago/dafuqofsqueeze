@@ -112,6 +112,7 @@ class surat_kelahiran extends op_controller {
                 $responce->rows[$i]['ibu_kota']     = $result[$i]['ibu_kota'] ; 
                  $responce->rows[$i]['ibu_kecamatan']     = $result[$i]['ibu_nama'] ; 
                   $responce->rows[$i]['ibu_provinsi']     = $result[$i]['ibu_provinsi'] ; 
+                   $responce->rows[$i]['lengkap']     = $result[$i]['lengkap'] ; 
             $responce->rows[$i]['ibu_nik']      = $result[$i]['ibu_nik'] ;
             $responce->rows[$i]['ibu_tgl_lahir']    = flipdate($result[$i]['ibu_tgl_lahir']) ;
             $responce->rows[$i]['saksi1_tgl_lahir']    = flipdate($result[$i]['saksi1_tgl_lahir']) ;
