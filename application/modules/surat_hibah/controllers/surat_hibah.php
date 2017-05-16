@@ -104,6 +104,7 @@ class surat_hibah extends op_controller {
             $responce->rows[$i]['nik_1']          = $result[$i]['nik_1'] ;
             $responce->rows[$i]['nik_2']          = $result[$i]['nik_2'] ;
             $responce->rows[$i]['pekerjaan_1']          = $result[$i]['pekerjaan_1'] ;
+             $responce->rows[$i]['lengkap']          = $result[$i]['lengkap'] ;
             $responce->rows[$i]['alamat_1']          = $result[$i]['alamat_1'] ;
             $responce->rows[$i]['warga_negara_penduduk_1']          = $result[$i]['warga_negara_penduduk_1'] ;
             $responce->rows[$i]['nik_penduduk_1']          = $result[$i]['nik_penduduk_1'] ;
