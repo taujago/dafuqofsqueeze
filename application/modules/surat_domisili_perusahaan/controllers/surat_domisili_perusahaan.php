@@ -103,6 +103,7 @@ class surat_domisili_perusahaan extends op_controller {
              $responce->rows[$i]['akta']              = $result[$i]['akta'];
            //  $responce->rows[$i]['nik']              = $result[$i]['nik'];
               $responce->rows[$i]['nama']              = $result[$i]['nama'];
+               $responce->rows[$i]['lengkap']          = $result[$i]['lengkap'] ; 
                 $responce->rows[$i]['tempat_lahir']              = $result[$i]['tempat_lahir'];
                 $responce->rows[$i]['pekerjaan']              = $result[$i]['pekerjaan'];
                    $responce->rows[$i]['jk']              = $result[$i]['jk'];
