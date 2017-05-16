@@ -85,6 +85,7 @@ class surat_kondisi_ekonomi extends op_controller {
             $responce->rows[$i]['id_penduduk']  = $result[$i]['id_penduduk'] ;
             $responce->rows[$i]['nama']         = $result[$i]['nama']; 
             $responce->rows[$i]['alamat']       = $result[$i]['alamat'];     
+            $responce->rows[$i]['lengkap']               = $result[$i]['lengkap'];     
             $responce->rows[$i]['tmp_lahir']  = $result[$i]['tmp_lahir'] ;             
             $responce->rows[$i]['tgl_lahir']  = $result[$i]['tgl_lahir'] ;             
             $responce->rows[$i]['jk']          = $result[$i]['jk'] ; 
