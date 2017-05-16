@@ -92,7 +92,8 @@ class surat_kepemilikan_rumah extends op_controller {
             $responce->rows[$i]['alamat']            = $result[$i]['alamat'];     
             $responce->rows[$i]['alamat_rumah']	     = $result[$i]['alamat_rumah'] ;           
             $responce->rows[$i]['ditinggali_sejak'] = $result[$i]['ditinggali_sejak'] ;
-            $responce->rows[$i]['ditinggali_sejak2'] = $result[$i]['ditinggali_sejak'] . " tahun";     			 
+            $responce->rows[$i]['ditinggali_sejak2'] = $result[$i]['ditinggali_sejak'] . " tahun";   
+            $responce->rows[$i]['lengkap'] = $result[$i]['lengkap'] ;  			 
             $responce->rows[$i]['ttd_nama']          = $result[$i]['ttd_nama'] ; 
             $responce->rows[$i]['ttd_jabatan']          = $result[$i]['ttd_jabatan'] ; 
             $responce->rows[$i]['ttd']          = $result[$i]['ttd'] ; 
