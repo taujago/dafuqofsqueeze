@@ -98,6 +98,7 @@ class surat_usaha extends op_controller {
             $responce->rows[$i]['luas']              = $result[$i]['luas'];
             $responce->rows[$i]['satuan']              = $result[$i]['satuan'];
 			$responce->rows[$i]['alamat_usaha']              = $result[$i]['alamat_usaha'];
+            $responce->rows[$i]['lengkap']              = $result[$i]['lengkap'];
 			
 			
             $responce->rows[$i]['alamat']            = $result[$i]['alamat']; 
