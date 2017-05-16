@@ -94,6 +94,7 @@ class surat_rekomendasi_situ extends op_controller {
             $responce->rows[$i]['nama']              = $result[$i]['nama']; 
 			$responce->rows[$i]['umur']              = $result[$i]['umur']; 
 			$responce->rows[$i]['pekerjaan']              = $result[$i]['pekerjaan']; 
+             $responce->rows[$i]['lengkap']         = $result[$i]['lengkap'];
 			$responce->rows[$i]['alamat']              = $result[$i]['alamat'];
 			$responce->rows[$i]['alamat_usaha']              = $result[$i]['alamat_usaha'];
 			$responce->rows[$i]['nama_usaha']              = $result[$i]['nama_usaha'];

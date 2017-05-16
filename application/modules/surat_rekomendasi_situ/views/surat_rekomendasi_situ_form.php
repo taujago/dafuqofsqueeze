@@ -64,6 +64,7 @@
 			 	 
 			 </table>
 			 </fieldset>
+			 
              <fieldset><legend><b>Data Tempat Usaha </b></legend>
             
              <table>
@@ -100,7 +101,9 @@
 		   
              	
 				 
-             
+               <?php
+					$this->load->view("berkas");
+				?>
              
 			<fieldset> <legend><strong>Pejabat </strong></legend>
 				<table width="661">
