@@ -99,6 +99,7 @@ class surat_ijin_keramaian extends op_controller {
             $responce->rows[$i]['nama_acara']  = $result[$i]['nama_acara'] ; 
 
              $responce->rows[$i]['jk']          = $result[$i]['jk'] ; 
+             $responce->rows[$i]['lengkap']          = $result[$i]['lengkap'] ;  
           //  $responce->rows[$i]['status_kawin']          = $arr_status_kawin[strtolower($result[$i]['status_kawin'])] ; 
            
             $responce->rows[$i]['ttd']          = $result[$i]['ttd'] ; 
