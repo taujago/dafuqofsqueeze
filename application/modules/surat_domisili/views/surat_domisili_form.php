@@ -18,17 +18,14 @@
 			 			 href="javascript:show_dialog('nik');">
 			 			cari </a>
 			 		</td></td>
-			 	</tr>
-			 	<td> Kelengkapan Berkas</td>
-			 		<td>:  <?php 
-						$lengkap = isset($lengkap)?$lengkap:"";
-						echo form_dropdown("lengkap",$this->cm->arr_lengkap(),$lengkap,'id="lengkap"') ?></td>
-					</td>
-				</tr>
+			 
 			 	 
 		 </table>
 			 
 			</fieldset>
+			 <?php
+					$this->load->view("berkas");
+				?>
 		  
 			<fieldset> <legend><strong>Pejabat </strong></legend>
 				<table width="661">
