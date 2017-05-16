@@ -91,6 +91,7 @@ class surat_pengantar_kayu extends op_controller {
             $responce->rows[$i]['nama']                 = $result[$i]['nama']; 
             $responce->rows[$i]['alamat']               = $result[$i]['alamat'];     
             $responce->rows[$i]['asal_kayu']            = $result[$i]['asal_kayu'] ;
+             $responce->rows[$i]['lengkap']         = $result[$i]['lengkap'] ;   
             $responce->rows[$i]['tempat_pengiriman']	= $result[$i]['tempat_pengiriman'] ;
             $responce->rows[$i]['jenis_kendaraan']		= $result[$i]['jenis_kendaraan'] ;
             $responce->rows[$i]['nomor_polisi']	        =  $result[$i]['nomor_polisi'] ;    
