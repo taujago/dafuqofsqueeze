@@ -92,6 +92,7 @@ class surat_penghasilan_orangtua extends op_controller {
             $responce->rows[$i]['ayah_nik']          = $result[$i]['ayah_nik'] ; 
             $responce->rows[$i]['ayah_alamat']          = $result[$i]['ayah_alamat'] ; 
             $responce->rows[$i]['ayah_id_penduduk']          = $result[$i]['ayah_id_penduduk'] ; 
+             $responce->rows[$i]['lengkap']          = $result[$i]['lengkap'] ;  
              
             $responce->rows[$i]['penghasilan2']          = rupiah($result[$i]['penghasilan']) ;
              $responce->rows[$i]['penghasilan']          =  $result[$i]['penghasilan']  ;
