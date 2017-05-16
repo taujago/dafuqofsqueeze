@@ -110,6 +110,7 @@ class surat_asal_usul_mempelai extends op_controller {
             $responce->rows[$i]['suami_provinsi']   = $result[$i]['suami_provinsi'] ;
              $responce->rows[$i]['ket_pria']   = $result[$i]['ket_pria'] ;
               $responce->rows[$i]['ket_wanita']   = $result[$i]['ket_wanita'] ;
+               $responce->rows[$i]['lengkap']   = $result[$i]['lengkap'] ;
                $responce->rows[$i]['nama_mantan']   = $result[$i]['nama_mantan'] ;
 
 
