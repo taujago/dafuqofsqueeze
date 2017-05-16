@@ -103,7 +103,7 @@ class surat_belum_memiliki_rumah extends op_controller {
             $responce->rows[$i]['pangkat']          = $result[$i]['pangkat'] ; 
             $responce->rows[$i]['penandatangan_jabatan']          = $result[$i]['ttd_jabatan'] ;            
              
-             
+              $responce->rows[$i]['lengkap']          = $result[$i]['lengkap'] ;
 
         } }
 		//echo "<hr />";
