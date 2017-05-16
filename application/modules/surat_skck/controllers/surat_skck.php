@@ -97,6 +97,8 @@ class surat_skck extends op_controller {
             $responce->rows[$i]['nama_rayon']          = $result[$i]['nama_rayon'] ;
             $responce->rows[$i]['rayon']          = $result[$i]['rayon'] ; 
             $responce->rows[$i]['wilayah']          = $result[$i]['wilayah'] ; 
+             $responce->rows[$i]['lengkap']          = $result[$i]['lengkap'] ; 
+
 
  
 

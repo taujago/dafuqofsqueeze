@@ -53,7 +53,9 @@
                 </table>
 			</fieldset>	
  -->
-
+  <?php
+					$this->load->view("berkas");
+				?>
 
 
 
