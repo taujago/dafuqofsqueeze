@@ -61,8 +61,15 @@
 
 			 	<tr>
 			 		<td >  Belum memiliki dengan pertimbangan</td> 
-			 		<td> : <input size="80" type="text" name="alasan" id="alasan" />  </td>
+			 		<td> : <input size="70" type="text" name="alasan" id="alasan" />  </td>
 			 	</tr>
+			 	<tr>
+			 	<td> Kelengkapan Berkas</td>
+			 		<td>:  <?php 
+						$lengkap = isset($lengkap)?$lengkap:"";
+						echo form_dropdown("lengkap",$this->cm->arr_lengkap(),$lengkap,'id="lengkap"') ?></td>
+					</td>
+				</tr>
 
 
 

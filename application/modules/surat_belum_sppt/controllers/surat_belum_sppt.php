@@ -100,7 +100,8 @@ class surat_belum_sppt extends op_controller {
 			$responce->rows[$i]['batas_utara']	= $result[$i]['batas_utara'] ;  
 			$responce->rows[$i]['batas_barat']	= $result[$i]['batas_barat'] ; 
 			$responce->rows[$i]['batas_timur']	= $result[$i]['batas_timur'] ; 
-            $responce->rows[$i]['ttd']          = $result[$i]['ttd'] ; 
+            $responce->rows[$i]['ttd']          = $result[$i]['ttd'] ;
+            $responce->rows[$i]['lengkap']          = $result[$i]['lengkap'] ; 
 
              $responce->rows[$i]['ttd_nama']          = $result[$i]['ttd_nama'] ; 
               
@@ -123,7 +124,8 @@ class surat_belum_sppt extends op_controller {
         $data = $this->input->post();
         $this->load->library('form_validation');
         $this->form_validation->set_rules('nik','NIK Pemohon','required');    
-        $this->form_validation->set_rules('no_surat','Nomor surat','required');    
+        $this->form_validation->set_rules('no_surat','Nomor surat','required');
+        $this->form_validation->set_rules('lengkap','Kelengkapan Berkas','required');    
         $this->form_validation->set_rules('luas','Luas','required|numeric');
         $this->form_validation->set_rules('batas_utara','Batas utara','required');       
         $this->form_validation->set_rules('batas_selatan','Batas selatan','required');    
