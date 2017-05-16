@@ -1,0 +1,66 @@
+DELIMITER $$
+
+USE `simdeskel`$$
+
+DROP VIEW IF EXISTS `v_surat_jual_beli_tanah`$$
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_surat_jual_beli_tanah` AS 
+SELECT
+  IF((`su`.`sumber_data_1` = 'ex'),`su`.`nama_penduduk_1`,`p1`.`nama`) AS `nama_1`,
+  IF((`su`.`sumber_data_1` = 'ex'),`su`.`alamat_penduduk_1`,`p1`.`alamat`) AS `alamat_1`,
+  IF((`su`.`sumber_data_1` = 'ex'),`su`.`nik_penduduk_1`,`p1`.`nik`) AS `nik_1`,
+  IF((`su`.`sumber_data_1` = 'ex'),`su`.`tempat_lahir_penduduk_1`,`p1`.`tmp_lahir`) AS `tempat_lahir_1`,
+  IF((`su`.`sumber_data_1` = 'ex'),`su`.`tanggal_lahir_penduduk_1`,`p1`.`tgl_lahir`) AS `tanggal_lahir_1`,
+  IF((`su`.`sumber_data_1` = 'ex'),`su`.`warga_negara_penduduk_1`,`p1`.`warga_negara`) AS `warga_negara_1`,
+  IF((`su`.`sumber_data_1` = 'ex'),`su`.`pekerjaan_penduduk_1`,`p1`.`pekerjaan`) AS `pekerjaan_1`,
+ 
+  IF((`su`.`sumber_data_2` = 'ex'),`su`.`nama_penduduk_2`,`p2`.`nama`) AS `nama_2`,
+  IF((`su`.`sumber_data_2` = 'ex'),`su`.`alamat_penduduk_2`,`p2`.`alamat`) AS `alamat_2`,
+  IF((`su`.`sumber_data_2` = 'ex'),`su`.`nik_penduduk_2`,`p2`.`nik`) AS `nik_2`,
+  IF((`su`.`sumber_data_2` = 'ex'),`su`.`tempat_lahir_penduduk_2`,`p2`.`tmp_lahir`) AS `tempat_lahir_2`,
+  IF((`su`.`sumber_data_2` = 'ex'),`su`.`tanggal_lahir_penduduk_2`,`p2`.`tgl_lahir`) AS `tanggal_lahir_2`,
+  IF((`su`.`sumber_data_2` = 'ex'),`su`.`warga_negara_penduduk_2`,`p2`.`warga_negara`) AS `warga_negara_2`,
+  IF((`su`.`sumber_data_2` = 'ex'),`su`.`pekerjaan_penduduk_2`,`p2`.`pekerjaan`) AS `pekerjaan_2`,
+  
+  `d`.`dusun`              AS `dusun`,
+  `su`.`id`                AS `id`,
+  `su`.`tanggal`           AS `tanggal`,
+  `su`.`no_surat`          AS `no_surat`,
+  `su`.`sumber_data_1`     AS `sumber_data_1`,
+  `su`.`sumber_data_2`     AS `sumber_data_2`,
+  `su`.`id_penduduk_1`     AS `id_penduduk_1`,
+  `su`.`id_penduduk_2`     AS `id_penduduk_2`,
+  `su`.`nama_penduduk_1`   AS `nama_penduduk_1`,
+  `su`.`nama_penduduk_2`   AS `nama_penduduk_2`,
+  `su`.`alamat_penduduk_1` AS `alamat_penduduk_1`,
+  `su`.`alamat_penduduk_2` AS `alamat_penduduk_2`,
+  `su`.`alamat_tanah`      AS `alamat_tanah`,
+  `su`.`rt_tanah`          AS `rt_tanah`,
+  `su`.`id_dusun_tanah`    AS `id_dusun_tanah`,
+  `su`.`luas`    AS `luas`,
+  `su`.`uang`    AS `uang`,
+  `su`.`terbilang`    AS `terbilang`,
+  `su`.`batas_utara`    AS `batas_utara`,
+  `su`.`batas_selatan`    AS `batas_selatan`,
+  `su`.`batas_timur`    AS `batas_timur`,
+  `su`.`batas_barat`	 AS `batas_barat`,
+  `su`.`saksi_1`    	AS `saksi_1`,
+  `su`.`saksi_2`    AS `saksi_2`,
+  `su`.`panjang`         AS `panjang`,
+  `su`.`lebar` AS `lebar`,
+  `su`.`notulis`           AS `notulis`,
+  `su`.`deleted`           AS `deleted`,
+  `su`.`ttd`               AS `ttd`,
+  `su`.`ttd_jabatan`       AS `ttd_jabatan`,
+  `su`.`ttd_nama`          AS `ttd_nama`,
+  `su`.`nip`               AS `nip`,
+  `su`.`pangkat`           AS `pangkat`
+FROM (((`surat_jual_beli_tanah` `su`
+    LEFT JOIN `v_penduduk2` `p1`
+       ON ((`p1`.`id_penduduk` = `su`.`id_penduduk_1`)))
+    LEFT JOIN `v_penduduk2` `p2`
+      ON ((`p2`.`id_penduduk` = `su`.`id_penduduk_2`)))
+   LEFT JOIN `tiger_dusun` `d`
+     ON ((`d`.`id_dusun` = `su`.`id_dusun_tanah`)))$$
+
+DELIMITER ;

@@ -1,0 +1,2 @@
+@echo off
+C:\SmartdesaTojoUnaUna\htdocs\simdeskel\backup\mysqldump.exe -u root --port=4418  simdeskel --ignore-table=simdeskel.tiger_desa --ignore-table=simdeskel.tiger2_desa  --log-error=error.txt > tmp/%1%
