@@ -134,8 +134,7 @@ class surat_berita_acara_tanah extends op_controller {
         //$this->form_validation->set_rules('nik','NIK','required');    
         $this->form_validation->set_rules('no_surat','Nomor surat','required');    
         //$this->form_validation->set_rules('jenis_usaha','Jenis Usaha ','required');        
-       // $this->form_validation->set_rules('bidang_usaha','Bidang Usaha ','required');  
-         $this->form_validation->set_rules('lengkap','Kelengkapan Berkas','required');        
+       // $this->form_validation->set_rules('bidang_usaha','Bidang Usaha ','required');         
         $this->form_validation->set_rules('alamat_tanah','Alamat Usaha ','required');        
         $this->form_validation->set_message('required', ' %s Harus diisi '); 
         $this->form_validation->set_message('numeric', ' %s Harus diisi dengan angka ');

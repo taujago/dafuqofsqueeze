@@ -120,8 +120,7 @@ class surat_bepergian extends op_controller {
         $data = $this->input->post();
         $this->load->library('form_validation');
         $this->form_validation->set_rules('nik','NIK','required');    
-        $this->form_validation->set_rules('no_surat','Nomor surat','required'); 
-        $this->form_validation->set_rules('lengkap','Kelengkapan Berkas','required');   
+        $this->form_validation->set_rules('no_surat','Nomor surat','required');  
         $this->form_validation->set_rules('tgl_berangkat','Tanggal berangkat','required');              
         $this->form_validation->set_rules('tgl_pulang','Tanggal Pulang','required');   
         $this->form_validation->set_rules('hubungan','Kedudukan dalam keluarga','required');              

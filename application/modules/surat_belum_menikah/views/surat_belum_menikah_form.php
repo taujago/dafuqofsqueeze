@@ -23,7 +23,9 @@
 		 </table>
 			 
 			</fieldset>
-		  
+		   <?php
+					$this->load->view("berkas");
+				?>
 			<fieldset> <legend><strong>Pejabat </strong></legend>
 				<table width="661">
 					<tr><td width="200px">Penanda tangan surat </td>
@@ -34,12 +36,7 @@
 				      <td>Nama </td>
 				      <td>: 
 			          <input name="penandatangan_nama" type="text" id="penandatangan_nama" size="40" /> </td></tr>
-			          <tr>
-			 		<td> Kelengkapan Berkas</td>
-			 		<td>:  <?php 
-						$lengkap = isset($lengkap)?$lengkap:"";
-						echo form_dropdown("lengkap",$this->cm->arr_lengkap(),$lengkap,'id="lengkap"') ?></td></td>
-			 	</tr>              
+			                
 		            <tr class="atas_nama">
 		              <td>Jabatan </td>
 		              <td>: <input name="penandatangan_jabatan" type="text" id="penandatangan_jabatan" size="40" /> </td></tr>                    <tr class="atas_nama">

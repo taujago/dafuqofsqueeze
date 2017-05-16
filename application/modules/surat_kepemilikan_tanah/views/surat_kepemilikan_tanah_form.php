@@ -59,14 +59,7 @@
 			 		<td >  Batas Timur</td> 
 			 		<td> : <input type="text" name="batas_timur" id="batas_timur" />  </td>
 			 	</tr>
-			 		<tr>
-			 		<td>Kelengkapan Berkas</td>
-			 		<td> : 	<?php
-        					echo form_radio('lengkap','0',TRUE).'Berkas Lengkap ';
-        					echo form_radio('lengkap','1').'Berkas Tidak Lengkap';
-   							?>
-   					</td>
-			 	</tr>
+			 		
 
 			 	 
 
@@ -75,7 +68,9 @@
 			 </table>
 			 
 			</fieldset>
-		  
+		   <?php
+					$this->load->view("berkas");
+				?>
 			<fieldset> <legend><strong>Pejabat </strong></legend>
 				<table width="661">
 					<tr><td width="200px">Penanda tangan surat </td>

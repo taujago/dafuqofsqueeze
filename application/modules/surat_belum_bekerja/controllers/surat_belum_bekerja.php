@@ -111,8 +111,7 @@ class surat_belum_bekerja extends op_controller {
         $data = $this->input->post();
         $this->load->library('form_validation');
         $this->form_validation->set_rules('nik','NIK Pemohon','required');    
-        $this->form_validation->set_rules('no_surat','Nomor surat','required'); 
-        $this->form_validation->set_rules('lengkap','Kelengkapan Berkas','required');              
+        $this->form_validation->set_rules('no_surat','Nomor surat','required');             
         $this->form_validation->set_message('required', ' %s Harus diisi '); 
         $this->form_validation->set_message('numeric', ' %s Harus diisi dengan angka ');
         $this->form_validation->set_message('alpha', ' %s Harus diisi dengan huruf ');
