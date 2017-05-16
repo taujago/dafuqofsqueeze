@@ -92,7 +92,8 @@ class surat_keterangan_data extends op_controller {
             $responce->rows[$i]['alamat']       = $result[$i]['alamat'];     
             $responce->rows[$i]['tmp_lahir']  = $result[$i]['tmp_lahir'] ;             
             $responce->rows[$i]['tgl_lahir']  = $result[$i]['tgl_lahir'] ;  
-            $responce->rows[$i]['data']  = $result[$i]['data'] ; 
+            $responce->rows[$i]['lengkap']  = $result[$i]['lengkap'] ; 
+             $responce->rows[$i]['data']  = $result[$i]['data'] ; 
             $responce->rows[$i]['no_kartu']  = $result[$i]['no_kartu'] ; 
             $responce->rows[$i]['alamt_kartu']  = $result[$i]['alamt_kartu'] ;            
             $responce->rows[$i]['tgl_lahir_kartu']      = flipdate($result[$i]['tgl_lahir_kartu']) ;
