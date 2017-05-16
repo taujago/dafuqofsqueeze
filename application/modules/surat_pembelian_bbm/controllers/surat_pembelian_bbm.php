@@ -95,6 +95,7 @@ class surat_pembelian_bbm extends op_controller {
             $responce->rows[$i]['data']  = $result[$i]['data'] ; 
             $responce->rows[$i]['banyak']  = $result[$i]['banyak'] ;             
             $responce->rows[$i]['kebutuhan']  = $result[$i]['kebutuhan'] ; 
+             $responce->rows[$i]['lengkap']  = $result[$i]['lengkap'] ; 
             
              $responce->rows[$i]['jk']          = $result[$i]['jk'] ; 
              $responce->rows[$i]['ttd']          = $result[$i]['ttd'] ; 
