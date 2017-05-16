@@ -96,6 +96,7 @@ class surat_kebakaran extends op_controller {
             $responce->rows[$i]['tgl_lahir']  = $result[$i]['tgl_lahir'] ;             
             $responce->rows[$i]['ttd']          = $result[$i]['ttd'] ; 
              $responce->rows[$i]['jk']          = $result[$i]['jk'] ; 
+              $responce->rows[$i]['lengkap']          = $result[$i]['lengkap'] ; 
             $responce->rows[$i]['isi_surat']            = $result[$i]['isi_surat'] ;
             $responce->rows[$i]['ttd']                  = $result[$i]['ttd'] ; 
             $responce->rows[$i]['ttd_nama']          = $result[$i]['ttd_nama'] ; 
