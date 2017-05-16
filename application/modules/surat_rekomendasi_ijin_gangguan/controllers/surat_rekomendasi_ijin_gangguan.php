@@ -111,6 +111,7 @@ class surat_rekomendasi_ijin_gangguan extends op_controller {
 			$responce->rows[$i]['ex_nik']              = $result[$i]['ex_nik'];
 			$responce->rows[$i]['ex_pekerjaan']              = $result[$i]['ex_pekerjaan'];
 			$responce->rows[$i]['ex_alamat']              = $result[$i]['ex_alamat'];
+            $responce->rows[$i]['lengkap']              = $result[$i]['lengkap'];
 			
             // $responce->rows[$i]['bidang_usaha']      = $result[$i]['bidang_usaha'];     			 
             $responce->rows[$i]['ttd']               = $result[$i]['ttd'] ; 
