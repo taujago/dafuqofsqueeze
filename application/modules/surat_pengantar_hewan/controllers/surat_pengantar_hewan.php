@@ -95,7 +95,8 @@ class surat_pengantar_hewan extends op_controller {
             $responce->rows[$i]['tempat_pengiriman']	= $result[$i]['tempat_pengiriman'] ;
             $responce->rows[$i]['jenis_kendaraan']		= $result[$i]['jenis_kendaraan'] ;
             $responce->rows[$i]['nomor_polisi']	        =  $result[$i]['nomor_polisi'] ;    
-            $responce->rows[$i]['volume_hewan']	        = $result[$i]['volume_hewan'] ;  
+            $responce->rows[$i]['volume_hewan']	        = $result[$i]['volume_hewan'] ; 
+            $responce->rows[$i]['lengkap']         = $result[$i]['lengkap'] ;   
             $responce->rows[$i]['ttd']                  = $result[$i]['ttd'] ; 
             $responce->rows[$i]['ttd_nama']          = $result[$i]['ttd_nama'] ; 
             $responce->rows[$i]['ttd_jabatan']          = $result[$i]['ttd_jabatan'] ; 
