@@ -95,6 +95,7 @@ class surat_domisili_bangunan extends op_controller {
 			
 			$responce->rows[$i]['b_jalan']         = $result[$i]['b_jalan']; 
 			$responce->rows[$i]['b_rt']         = $result[$i]['b_rt']; 
+            $responce->rows[$i]['lengkap']         = $result[$i]['lengkap']; 
 			$responce->rows[$i]['desa']         =  $desa2->desa; //$result[$i]['b_desa']; 
 			$responce->rows[$i]['kecamatan']    = $desa2->kecamatan; //$result[$i]['b_kecamatan']; 
 			
