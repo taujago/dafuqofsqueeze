@@ -92,6 +92,7 @@ class surat_rekomendasi_dana extends op_controller {
             $responce->rows[$i]['uang']       = $result[$i]['uang'];     
             $responce->rows[$i]['rincian']  = $result[$i]['rincian'] ;             
             $responce->rows[$i]['bank']  = $result[$i]['bank'] ;             
+            $responce->rows[$i]['lengkap']  = $result[$i]['lengkap'] ;             
             $responce->rows[$i]['ttd']          = $result[$i]['ttd'] ; 
              $responce->rows[$i]['bendahara']          = $result[$i]['bendahara'] ; 
             $responce->rows[$i]['ttd_nama']          = $result[$i]['ttd_nama'] ; 
