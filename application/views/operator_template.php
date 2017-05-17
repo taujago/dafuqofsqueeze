@@ -118,7 +118,7 @@ function tampilsurat() {
 				
 				 
 		</div>
-		<div id="menu-spm" style="width:200px;">
+		<div id="menu-spm" style="width:300px;">
                <div href="<?php echo site_url("operator_penduduk_ektp") ?>">Penduduk Pemilik E-KTP</div>
   				  <div href="<?php echo site_url("statistik_kepemilikan_tanah") ?>"> Statistik Dokumen Kepemilikan Tanah </div>
 
