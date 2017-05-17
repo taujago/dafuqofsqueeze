@@ -95,6 +95,7 @@ class surat_tidak_sengketa extends op_controller {
             $responce->rows[$i]['blok']		    = $result[$i]['blok'] ;
             $responce->rows[$i]['persil']	    =  $result[$i]['persil'] ;    
             $responce->rows[$i]['luas']	        = $result[$i]['luas'] ;  
+            $responce->rows[$i]['lengkap']         = $result[$i]['lengkap'] ;  
             $responce->rows[$i]['dimiliki_sejak']	= $result[$i]['dimiliki_sejak'] ;    
  			$responce->rows[$i]['batas_selatan']	= $result[$i]['batas_selatan'] ;  
 			$responce->rows[$i]['batas_utara']	= $result[$i]['batas_utara'] ;  
