@@ -37,12 +37,10 @@ function index()
 	$data['controller'] = "statistik_dokumen_keterangan";
 
     $this->db->where("lengkap",0); 
-    $this->db->where("deleted",0);
-    $jumlah_sudah  = $this->db->get("surat_kepemilikan_tanah")->num_rows(); 
+     $jumlah_sudah  = $this->db->get("surat_kepemilikan_tanah")->num_rows(); 
 
     $this->db->where("lengkap",1); 
-    $this->db->where("deleted",0);
-    $jumlah_belum  = $this->db->get("surat_kepemilikan_tanah")->num_rows(); 
+     $jumlah_belum  = $this->db->get("surat_kepemilikan_tanah")->num_rows(); 
    	
     $total =  $jumlah_sudah + $jumlah_belum; 
 
@@ -54,6 +52,34 @@ function index()
 	$this->set_content($content);
 	$this->render();
     }
+
+function graphic(){
+    $data = $this->input->post();
+
+    $tahun = $data['tahun']; 
+
+    $this->db->where("lengkap",0); 
+    $this->db->where("year(tanggal) = $tahun",null,false);
+    $jumlah_sudah  = $this->db->get("v_stat_surat")->num_rows(); 
+
+    $this->db->where("lengkap",1); 
+    $this->db->where("year(tanggal) = $tahun",null,false);
+    $jumlah_belum  = $this->db->get("v_stat_surat")->num_rows(); 
+
+    // echo "jumlah sudah $jumlah_sudah dan belum $jumlah_belum"; 
+
+    $total =  $jumlah_sudah + $jumlah_belum; 
+
+    $data['persen_sudah'] = number_format( ($jumlah_sudah / $total * 100) ,2);
+    $data['persen_belum'] = number_format( ($jumlah_belum / $total * 100) ,2);
+
+    // show_array($data); 
+
+    $this->load->view("statistik_dokumen_keterangan_view_grafik",$data);
+
+
+
+}
 
 }
 
