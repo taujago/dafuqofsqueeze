@@ -94,6 +94,7 @@ class surat_umum extends op_controller {
             $responce->rows[$i]['tgl_lahir']  = $result[$i]['tgl_lahir'] ;             
             $responce->rows[$i]['ttd']          = $result[$i]['ttd'] ; 
              $responce->rows[$i]['jk']          = $result[$i]['jk'] ; 
+              $responce->rows[$i]['lengkap']          = $result[$i]['lengkap'] ; 
             $responce->rows[$i]['ttd_nama']          = $result[$i]['ttd_nama'] ; 
             $responce->rows[$i]['ttd_jabatan']          = $result[$i]['ttd_jabatan'] ; 
             $responce->rows[$i]['ttd']          = $result[$i]['ttd'] ; 
