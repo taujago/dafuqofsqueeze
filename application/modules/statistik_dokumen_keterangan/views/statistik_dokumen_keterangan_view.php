@@ -5,60 +5,44 @@
 	 	<?php echo $title; ?>
 	 </div>
 
-<p></p>
 
 
-<div id="grafikdata">
+<div style="margin-top: 50px;" > </div>
 
-</div>  
+<p align="center">
+    
+  Tahun <input value="<?php echo date("Y"); ?>" type="text" name="tahun" id="tahun" placeholder="Tahun" />
+  <a href="#" class="easyui-linkbutton" iconCls="icon-view" plain="true" onclick="cetak();">Tampilkan</a>
+</p>
 
+
+
+<div id="graphicbox">
 </div>
 
 
+</div>
+
 <script type="text/javascript">
-	
-$(document).ready(function () {
+    
+   function cetak(){
+       vtahun = $("#tahun").val();
+       if(vtahun==undefined || vtahun=="") {
+            $.messager.alert('Error','Tahun harus diisi','error');
+       }
+       else {
+            $.ajax({
+                url : '<?php echo site_url("statistik_dokumen_keterangan/graphic") ?>',
+                data : {tahun : vtahun},
+                type : 'post',
+                success : function(htmldata) {
+                   $("#graphicbox").html(htmldata); 
+                }
 
-    // Build the chart
+            });
+       }
+   }
 
-    $('#grafikdata').highcharts(
-    // Highcharts.chart('container', 
-    {
-        chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: null,
-            plotShadow: false,
-            type: 'pie'
-        },
-        title: {
-            text: 'GRAFIK KELENGKAPAN DOKUMEN KEPEMILIKAN TANAH '
-        },
-        tooltip: {
-            pointFormat: 'Persentase : <b>{point.percentage:.1f}%</b>'
-        },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                dataLabels: {
-                    enabled: false
-                },
-                showInLegend: true
-            }
-        },
-        series: [{
-            name: 'KELENGKAPAN DOKUMEN',
-            colorByPoint: true,
-            data: [{
-                name: 'LENGKAP <?php echo $persen_sudah; ?>',
-                y: <?php echo $persen_sudah; ?>
-            }, {
-                name: 'TIDAK LENGKAP  <?php echo $persen_belum; ?>',
-                y: <?php echo $persen_belum; ?>, 
-                sliced: true,
-                selected: true
-            } ]
-        }]
-    });
-});
 </script>
+
+
