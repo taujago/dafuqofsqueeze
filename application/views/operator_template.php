@@ -59,13 +59,14 @@ function tampilsurat() {
 			 	
 			 	<!-- <a href="<?php echo site_url("operator_dusun"); ?>" class="easyui-linkbutton" plain="true" iconCls="icon-products">Data Dusun</a> -->
 			 	<a href="#" class="easyui-menubutton" menu="#menu-penduduk" plain="true" iconCls="icon-members">Data Kependudukan</a>
+			 	 <a href="#" class="easyui-menubutton" menu="#menu-statistik" plain="true" iconCls="icon-statistics">Statistik dan Cetak Laporan  </a> 
 			 	<!-- <a href="#" class="easyui-menubutton" menu="#menu-profil" plain="true" iconCls="icon-profil">Profil <?php echo $desa2->bentuk_lembaga ?></a> -->
                 
 			 	<a href="<?php echo site_url("surat") ?>" class="easyui-linkbutton" plain="true" iconCls="icon-surat">Surat Menyurat</a>  
 			 	<a href="<?php echo site_url("formulir_master") ?>" class="easyui-linkbutton" plain="true" iconCls="icon-formulir">Formulir Kependudukan</a> 
                 <a href="<?php echo site_url("profil_menu") ?>" class="easyui-menubutton" menu="#menu-profil" plain="true" iconCls="icon-profil">Profil Desa  </a> 
 				<!-- <a href="<?php echo site_url("perkembangan_menu") ?>" class="easyui-linkbutton" menu="#menu-perkembangan" plain="true" iconCls="icon-statistics">Perkembangan Desa</a>  -->
-                <a href="#" class="easyui-menubutton" menu="#menu-statistik" plain="true" iconCls="icon-statistics">Statistik dan Cetak Laporan  </a> 
+               
                 <a href="<?php echo site_url("admin_menu"); ?>" class="easyui-linkbutton"  menu="#menu-profil-lembaga"  plain="true" iconCls="icon-profil">Buku Administrasi Desa</a>  
                 <a href="#" class="easyui-menubutton" plain="true" menu="#menu-spm" iconCls="icon-spm">SPM Desa</a>
 			 	
