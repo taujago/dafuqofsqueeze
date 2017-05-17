@@ -52,8 +52,9 @@ function tampilsurat() {
 			 	<?php }
 			 	else {
 			 		?>
-			 		<a href="<?php echo site_url("operator_setting") ?>" class="easyui-linkbutton" plain="true" iconCls="icon-settings">Pengaturan Data Desa</a>
+
 			 	<a href="<?php echo site_url("operator_area"); ?>" class="easyui-linkbutton" plain="true" iconCls="icon-home">Home</a>  
+			 	<a href="<?php echo site_url("operator_setting") ?>" class="easyui-linkbutton" plain="true" iconCls="icon-settings">Pengaturan Data Desa</a>
 			 	<a href="#" class="easyui-menubutton" plain="true" menu="#menu-master" iconCls="icon-products">Data Master</a>
 			 	
 			 	<!-- <a href="<?php echo site_url("operator_dusun"); ?>" class="easyui-linkbutton" plain="true" iconCls="icon-products">Data Dusun</a> -->
