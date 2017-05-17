@@ -26,18 +26,18 @@ function excel() {
 
 	vid_ektp = $("#search_ektp").val();
 	//window.open('<?php echo site_url("$controller/exceletkp/") ?>/'+vid_ektp);
-	window.open('<?php echo site_url("statistik_penduduk_beragama/exceletkp/") ?>/'+vid_ektp);
+	
 
-	// if(vid_ektp == "x") { 
+	if(vid_ektp == "x") { 
 		
-	// 	$.messager.alert('Error','Pilih status EKTP','error');
+		$.messager.alert('Error','Pilih status EKTP','error');
 		 
-	// }
-	// else 
-	// {
+	}
+	else 
+	{
 		
-		// window.open('<?php echo site_url("$controller/cetak") ?>'+jenis_cetak+'/'+v_id_agama);
-	//}
+		window.open('<?php echo site_url("statistik_penduduk_beragama/exceletkp/") ?>/'+vid_ektp);
+	}
 	
 	 
 }

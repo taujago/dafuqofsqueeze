@@ -49,6 +49,7 @@
 		<!-- <a href="statistik_penduduk_kaya_miskin" class="easyui-linkbutton" iconCls="icon-viewlist" plain="true" >Lihat Penduduk Miskin</a> -->
 		<a href="#" class="easyui-linkbutton" iconCls="icon-print" plain="true" onclick="cetak();">Cetak</a>
 	 	 <a href="#" class="easyui-linkbutton" iconCls="icon-excel" plain="true" onclick="excel();">Export Excel</a>
+	 	<a href="<?php echo site_url("$controller/grafik") ?>" class="easyui-linkbutton" iconCls="icon-pie" plain="true" >Grafik Statistik Kepemilikan E-KTP</a>
 		<br />
 		 
 	</div>
