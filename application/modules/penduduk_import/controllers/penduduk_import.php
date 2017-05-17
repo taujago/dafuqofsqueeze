@@ -148,7 +148,8 @@ function import(){
 		// "no_kk" 				=> str_replace("_", "", $data['E']),
 		"no_kk" 				=> $data['O'],
 
-		"alamat" 				=> htmlentities($data['Q']),
+		// "alamat" 				=> htmlentities($data['Q']),
+		"alamat"				=> $this->fix_alamat($data['Q'] ),
 		"foto"					=> $data['W'] ,
 		
 		// "alamat" 				=> substr($data['Q'],"0","5"),
@@ -299,29 +300,17 @@ function import(){
 		return $data->id_pendidikan;
 	}
 	
+	public function fix_alamat($alamat =''){
+
+		$al = explode(";RT", $alamat);
+		$a = $al[0];
+		$b = $al[1];
+
+		$ala = "$a";
+		return $ala;
+	}
+	
 	public function fix_date($date = ''){
-		// $temp = explode("/",$date);
-		// // $arr_month = $this->manual_mapping("month");
-		
-		// $y = $temp[0];
-		// $m = $temp[1];
-		// $d = $temp[2];
-		
-		// if(intval($m) > 12)
-		// {
-		// 	$tmp = $d;
-		// 	$d = $m;
-		// 	$m = $tmp;
-		// }
-		
-		// if(intval($y) > 20 && intval($y) <= 90)
-		// {
-		// 	$y = "19".$y;
-		// 	$date = "$d/$m/$y";
-		// 	return $date;
-		// }
-		
-		// $date = "$d-$m-$y";
 		$time = strtotime($date);
 		$date = date('d-m-Y',$time);
 		$date = str_replace("/", "-", $date);
