@@ -106,7 +106,12 @@ function tampilsurat() {
                  <div href="<?php echo site_url("statistik_penduduk_janda/index_utama") ?>"> Penduduk Duda Janda </div>
                  <div href="<?php echo site_url("operator_penduduk_miskin") ?>"> Penduduk Miskin </div>
 
-                  <div href="<?php echo site_url("operator_penduduk_ektp") ?>"> Penduduk Pemilik E-KTP </div>
+              <div href="<?php echo site_url("operator_penduduk_ektp") ?>"> Penduduk Pemilik E-KTP </div>
+
+              <div href="<?php echo site_url("statistik_kepemilikan_tanah") ?>"> Statistik Dokumen Kepemilikan Tanah </div>
+
+               <div href="<?php echo site_url("statistik_dokumen_keterangan") ?>"> Statistik Pemberian Surat Keterangan </div>
+
                 <div href="<?php echo site_url("statistik_penduduk_beragama") ?>"> Penduduk Beragama </div>
                 <div href="<?php echo site_url("statistik_penduduk_balita") ?>"> Penduduk Balita </div>
                 <div href="<?php echo site_url("statistik_penduduk_pemilu") ?>"> Penduduk Memiliki Hak Pilih </div>
