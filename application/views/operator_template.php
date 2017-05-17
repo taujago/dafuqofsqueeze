@@ -65,6 +65,7 @@ function tampilsurat() {
 				<!-- <a href="<?php echo site_url("perkembangan_menu") ?>" class="easyui-linkbutton" menu="#menu-perkembangan" plain="true" iconCls="icon-statistics">Perkembangan Desa</a>  -->
                 <a href="#" class="easyui-menubutton" menu="#menu-statistik" plain="true" iconCls="icon-statistics">Statistik dan Cetak Laporan  </a> 
                 <a href="<?php echo site_url("admin_menu"); ?>" class="easyui-linkbutton"  menu="#menu-profil-lembaga"  plain="true" iconCls="icon-profil">Buku Administrasi Desa</a>  
+                <a href="#" class="easyui-menubutton" plain="true" menu="#menu-spm" iconCls="icon-spm">SPM Desa</a>
 			 	<a href="<?php echo site_url("operator_setting") ?>" class="easyui-linkbutton" plain="true" iconCls="icon-settings">Pengaturan Data Desa</a>
                <a href="#" class="easyui-menubutton" menu="#pemeliharaan" iconCls="icon-maintenance">Pemeliharaan</a>	
 			 	<a href="<?php echo site_url("users/detail"); ?>" class="easyui-linkbutton" plain="true" iconCls="icon-key">Administrator</a>    
@@ -106,12 +107,6 @@ function tampilsurat() {
                  <div href="<?php echo site_url("statistik_penduduk_janda/index_utama") ?>"> Penduduk Duda Janda </div>
                  <div href="<?php echo site_url("operator_penduduk_miskin") ?>"> Penduduk Miskin </div>
 
-              <div href="<?php echo site_url("operator_penduduk_ektp") ?>"> Penduduk Pemilik E-KTP </div>
-
-              <div href="<?php echo site_url("statistik_kepemilikan_tanah") ?>"> Statistik Dokumen Kepemilikan Tanah </div>
-
-               <div href="<?php echo site_url("statistik_dokumen_keterangan") ?>"> Statistik Pemberian Surat Keterangan </div>
-
                 <div href="<?php echo site_url("statistik_penduduk_beragama") ?>"> Penduduk Beragama </div>
                 <div href="<?php echo site_url("statistik_penduduk_balita") ?>"> Penduduk Balita </div>
                 <div href="<?php echo site_url("statistik_penduduk_pemilu") ?>"> Penduduk Memiliki Hak Pilih </div>
@@ -122,6 +117,14 @@ function tampilsurat() {
 
 				
 				 
+		</div>
+		<div id="menu-spm" style="width:200px;">
+               <div href="<?php echo site_url("operator_penduduk_ektp") ?>">Penduduk Pemilik E-KTP</div>
+  				  <div href="<?php echo site_url("statistik_kepemilikan_tanah") ?>"> Statistik Dokumen Kepemilikan Tanah </div>
+
+               <div href="<?php echo site_url("statistik_dokumen_keterangan") ?>"> Statistik Pemberian Surat Keterangan </div>
+				
+				
 		</div>
 
 
@@ -153,6 +156,8 @@ function tampilsurat() {
 				<div href="<?php echo site_url("operator_dusun") ?>">Keturunan/Kebangsaan</div>
 				-->
 		</div>
+
+		
 
 		<div id="menu-penduduk" style="width:350px;">
 <!--  			<div href="<?php echo base_url("data/FORMULIR_DATA_PENDUDUK.docx") ?>">Download Formulir Data Penduduk </div>
