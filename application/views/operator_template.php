@@ -52,6 +52,7 @@ function tampilsurat() {
 			 	<?php }
 			 	else {
 			 		?>
+			 		<a href="<?php echo site_url("operator_setting") ?>" class="easyui-linkbutton" plain="true" iconCls="icon-settings">Pengaturan Data Desa</a>
 			 	<a href="<?php echo site_url("operator_area"); ?>" class="easyui-linkbutton" plain="true" iconCls="icon-home">Home</a>  
 			 	<a href="#" class="easyui-menubutton" plain="true" menu="#menu-master" iconCls="icon-products">Data Master</a>
 			 	
@@ -66,7 +67,7 @@ function tampilsurat() {
                 <a href="#" class="easyui-menubutton" menu="#menu-statistik" plain="true" iconCls="icon-statistics">Statistik dan Cetak Laporan  </a> 
                 <a href="<?php echo site_url("admin_menu"); ?>" class="easyui-linkbutton"  menu="#menu-profil-lembaga"  plain="true" iconCls="icon-profil">Buku Administrasi Desa</a>  
                 <a href="#" class="easyui-menubutton" plain="true" menu="#menu-spm" iconCls="icon-spm">SPM Desa</a>
-			 	<a href="<?php echo site_url("operator_setting") ?>" class="easyui-linkbutton" plain="true" iconCls="icon-settings">Pengaturan Data Desa</a>
+			 	
                <a href="#" class="easyui-menubutton" menu="#pemeliharaan" iconCls="icon-maintenance">Pemeliharaan</a>	
 			 	<a href="<?php echo site_url("users/detail"); ?>" class="easyui-linkbutton" plain="true" iconCls="icon-key">Administrator</a>    
 			<!--  	<a href="<?php echo site_url("operator_setting/info"); ?>" class="easyui-linkbutton" plain="true" iconCls="icon-info">Informasi Software</a>   -->
