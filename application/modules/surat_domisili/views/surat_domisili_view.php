@@ -13,6 +13,7 @@
 				<th field="tmp_lahir" width="100" sortable="true"><strong>Tmp Lahir </strong></th>
 				<th field="tgl_lahir" width="100" sortable="true"><strong>Tgl Lahir </strong></th>
 				<th field="alamat" width="200" sortable="true"><strong>Alamat</strong></th>
+				
 				 
 			</tr>
 			

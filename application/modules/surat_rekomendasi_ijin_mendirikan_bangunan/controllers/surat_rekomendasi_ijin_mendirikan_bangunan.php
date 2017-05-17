@@ -102,6 +102,7 @@ class surat_rekomendasi_ijin_mendirikan_bangunan extends op_controller {
 			
             $responce->rows[$i]['alamat']            = $result[$i]['alamat']; 
 			$responce->rows[$i]['ex_rt']            = $result[$i]['ex_rt'];
+             $responce->rows[$i]['lengkap']          = $result[$i]['lengkap'] ;
 			
             $responce->rows[$i]['alamat_usaha']	     = $result[$i]['alamat_usaha'] ;           
             $responce->rows[$i]['jenis_usaha']       = $result[$i]['jenis_usaha'] ;
