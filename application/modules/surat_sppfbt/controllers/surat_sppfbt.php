@@ -97,6 +97,7 @@ class surat_sppfbt extends op_controller {
             $responce->rows[$i]['blok']		    = $result[$i]['blok'] ;
             $responce->rows[$i]['persil']	    =  $result[$i]['persil'] ;    
             $responce->rows[$i]['luas']	        = $result[$i]['luas'] ;  
+            $responce->rows[$i]['lengkap']         = $result[$i]['lengkap'] ;  
             $responce->rows[$i]['status_perolehan_tanah']         = $result[$i]['status_perolehan_tanah'] ;  
 
 $responce->rows[$i]['dimiliki_sejak'] = $result[$i]['dimiliki_sejak'] ;
